@@ -2,21 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const AnswerList = props => {
-  const answerList = props.answer.map(answer => {
-    return (
-      <div>
-        <input
-          type="radio"
-          id="HTML"
-          value={answer}
-          checked={props.selected === props.correctAnswer}
-          onChange={props.onAnswerSelection}
-        />
-        <label htmlFor="HTML">{answer}</label>
-      </div>
-    );
-  });
-  return <ul>{answerList}</ul>;
+  return (
+    <li className="answerOption">
+      <input
+        type="radio"
+        className="radioCustomButton"
+        name="radioGroup"
+        checked={props.type === props.answer}
+        id={props.type}
+        value={props.type}
+        disabled={props.answer}
+        onChange={props.onAnswerSelected}
+      />
+      <label className="radioCustomLabel" htmlFor={props.type}>
+        {props.answerContent}
+      </label>
+    </li>
+  );
 };
 
 export default AnswerList;
