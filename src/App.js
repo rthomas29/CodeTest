@@ -10,6 +10,7 @@ class App extends Component {
     this.state = {
       content: '',
       currentIndex: 0,
+      answers: [],
       // correctAnswer: '',
       // selectedAnswer: '',
       // currentIndex: 0,
@@ -44,12 +45,13 @@ class App extends Component {
     if (this.currentIndex <= quizQuestions.questions.length) {
       this.setState({
         content: quizQuestions.questions[this.currentIndex + 1].question,
+        answers: quizQuestions.questions[this.currentIndex + 1].answers,
       });
       this.currentIndex += 1;
     }
   }
   componentWillMount() {
-    this.setState({ content: quizQuestions.questions[0].question });
+    this.setState({ content: quizQuestions.questions[0].question, answers: quizQuestions.questions[0].answers });
   }
   render() {
     return (
@@ -61,6 +63,7 @@ class App extends Component {
         <Quiz
           content={this.state.content}
           handleQuestionChange={this.handleQuestionChange}
+          answers={this.state.answers}
           /* content={this.state.currentQuestion}
           answers={quizQuestions.questions[0].answers}
           handleQuestionChange={this.handleQuestionChange}
