@@ -11,6 +11,7 @@ const Quiz = props => {
         answers={props.answers}
         onAnswerSelection={props.onAnswerSelection}
         selectedAnswer={props.selectedAnswer}
+        correct={props.correct}
       />
       <button onClick={props.handleQuestionChange}>Click</button>
     </div>

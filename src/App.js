@@ -9,9 +9,9 @@ class App extends Component {
     super();
     this.state = {
       content: '',
-      currentIndex: 0,
       answers: [],
       selectedAnswer: '',
+      correctAnswer: '',
       // correctAnswer: '',
       // selectedAnswer: '',
       // currentIndex: 0,
@@ -22,30 +22,33 @@ class App extends Component {
     this.onAnswerSelection = this.onAnswerSelection.bind(this);
     this.currentIndex = 0;
   }
-  // handleQuestionChange() {
-  //   if (this.state.answerId !== undefined) {
-  //     this.setState({
-  //       answerId: this.state.answerId + 1,
-  //       currentQuestion: quizQuestions.questions[this.state.answerId].question,
-  //     });
-  //   } else {
-  //     this.setState({ answerId: quizQuestions.questions[quizQuestions.questions.length - 1].id });
-  //   }
-  // }
   onAnswerSelection(e) {
     this.setState({ selectedAnswer: e.target.value });
   }
   handleQuestionChange() {
-    if (this.currentIndex <= quizQuestions.questions.length) {
+    if (this.currentIndex < quizQuestions.questions.length) {
       this.setState({
-        content: quizQuestions.questions[this.currentIndex + 1].question,
-        answers: quizQuestions.questions[this.currentIndex + 1].answers,
+        content: quizQuestions.questions[this.currentIndex].question,
+        answers: quizQuestions.questions[this.currentIndex].answers,
+        correctAnswer: quizQuestions.questions[this.currentIndex].correct,
       });
       this.currentIndex += 1;
+    } else {
+      alert('quiz over');
     }
   }
   componentWillMount() {
-    this.setState({ content: quizQuestions.questions[0].question, answers: quizQuestions.questions[0].answers });
+    this.setState({
+      content: quizQuestions.questions[0].question,
+      answers: quizQuestions.questions[0].answers,
+      correctAnswer: quizQuestions.questions[0].correct,
+    });
+  }
+  componentDidUpdate() {
+    console.log('update');
+    if (this.state.selectedAnswer === this.state.correctAnswer) {
+      this.handleQuestionChange();
+    }
   }
   render() {
     return (
@@ -60,11 +63,10 @@ class App extends Component {
           answers={this.state.answers}
           onAnswerSelection={this.onAnswerSelection}
           selectedAnswer={this.state.selectedAnswer}
+          correct={this.state.correctAnswer}
           /*
           answers={quizQuestions.questions[0].answers}
           handleQuestionChange={this.handleQuestionChange}
-          onAnswerSelection={this.onAnswerSelection}
-          selected={this.state.selectedAnswer}
           correct={this.state.correctAnswer}
           type={this.state.type} */
         />
