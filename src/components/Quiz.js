@@ -7,7 +7,11 @@ const Quiz = props => {
   return (
     <div>
       <Question content={props.content} />
-      <AnswerList answers={props.answers} />
+      <AnswerList
+        answers={props.answers}
+        onAnswerSelection={props.onAnswerSelection}
+        selectedAnswer={props.selectedAnswer}
+      />
       <button onClick={props.handleQuestionChange}>Click</button>
     </div>
   );

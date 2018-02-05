@@ -11,6 +11,7 @@ class App extends Component {
       content: '',
       currentIndex: 0,
       answers: [],
+      selectedAnswer: '',
       // correctAnswer: '',
       // selectedAnswer: '',
       // currentIndex: 0,
@@ -18,12 +19,9 @@ class App extends Component {
       // type: '',
     };
     this.handleQuestionChange = this.handleQuestionChange.bind(this);
-    // this.onAnswerSelection = this.onAnswerSelection.bind(this);
+    this.onAnswerSelection = this.onAnswerSelection.bind(this);
     this.currentIndex = 0;
   }
-  // onAnswerSelection(e) {
-  //   this.setState({ selectedAnswer: e.target.value });
-  // }
   // handleQuestionChange() {
   //   if (this.state.answerId !== undefined) {
   //     this.setState({
@@ -34,13 +32,9 @@ class App extends Component {
   //     this.setState({ answerId: quizQuestions.questions[quizQuestions.questions.length - 1].id });
   //   }
   // }
-  // componentWillMount() {
-  //   this.setState({
-  //     currentQuestion: quizQuestions.questions[this.state.currentIndex].question,
-  //     currentAnswer: quizQuestions.questions[this.state.currentIndex].correct,
-  //     type: quizQuestions.questions[this.state.currentIndex].type,
-  //   });
-  // }
+  onAnswerSelection(e) {
+    this.setState({ selectedAnswer: e.target.value });
+  }
   handleQuestionChange() {
     if (this.currentIndex <= quizQuestions.questions.length) {
       this.setState({
@@ -64,7 +58,9 @@ class App extends Component {
           content={this.state.content}
           handleQuestionChange={this.handleQuestionChange}
           answers={this.state.answers}
-          /* content={this.state.currentQuestion}
+          onAnswerSelection={this.onAnswerSelection}
+          selectedAnswer={this.state.selectedAnswer}
+          /*
           answers={quizQuestions.questions[0].answers}
           handleQuestionChange={this.handleQuestionChange}
           onAnswerSelection={this.onAnswerSelection}
