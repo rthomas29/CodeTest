@@ -5,7 +5,13 @@ const AnswerList = props => {
   const answerList = props.answer.map(answer => {
     return (
       <div>
-        <input type="radio" id="HTML" />
+        <input
+          type="radio"
+          id="HTML"
+          value={answer}
+          checked={props.selected === props.correctAnswer}
+          onChange={props.onAnswerSelection}
+        />
         <label htmlFor="HTML">{answer}</label>
       </div>
     );
