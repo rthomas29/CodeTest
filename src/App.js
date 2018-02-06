@@ -68,6 +68,9 @@ class App extends Component {
       this.setState({ done: true });
     }
   }
+  calculateResults(count, total) {
+    return `${Math.round(count / total * 100)}%`;
+  }
   componentWillMount() {
     this.setState({
       content: quizQuestions.questions[0].question,
@@ -78,7 +81,7 @@ class App extends Component {
   }
   render() {
     if (this.state.done === true) {
-      return <Results results={this.state.answersCount} />;
+      return <Results results={this.state.answersCount} calculateTotal={this.calculateResults} />;
     }
     return (
       <div className="App">

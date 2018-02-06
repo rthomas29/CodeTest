@@ -5,9 +5,15 @@ const Results = props => {
   return (
     <div>
       <h3>Results</h3>
-      <p>HTML: {props.results.HTML}</p>
-      <p>CSS: {props.results.CSS}</p>
-      <p>HTML: {props.results.JavaScript}</p>
+      <p>
+        HTML: {props.results.HTML} of 2 - {props.calculateTotal(props.results.HTML, 2)}
+      </p>
+      <p>
+        CSS: {props.results.CSS} of 2 - {props.calculateTotal(props.results.CSS, 2)}
+      </p>
+      <p>
+        HTML: {props.results.JavaScript} of 2 - {props.calculateTotal(props.results.JavaScript, 2)}
+      </p>
     </div>
   );
 };
