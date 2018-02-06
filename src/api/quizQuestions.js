@@ -45,6 +45,7 @@ const quizQuestions = {
       question: 'Which answer correctly displays the declaration and initialization of an array literal?',
       type: 'JavaScript',
       answers: ['var arr = {};', 'var arr;', 'var arr = [];', 'var arr = {a};'],
+      correct: 'var arr = [];',
     },
   ],
 };

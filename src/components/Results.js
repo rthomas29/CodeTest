@@ -12,7 +12,7 @@ const Results = props => {
         CSS: {props.results.CSS} of 2 - {props.calculateTotal(props.results.CSS, 2)}
       </p>
       <p>
-        HTML: {props.results.JavaScript} of 2 - {props.calculateTotal(props.results.JavaScript, 2)}
+        JavaScript: {props.results.JavaScript} of 2 - {props.calculateTotal(props.results.JavaScript, 2)}
       </p>
     </div>
   );
