@@ -21,6 +21,31 @@ const quizQuestions = {
       answers: ['display', 'hide', 'block', 'no-show'],
       correct: 'display',
     },
+    {
+      id: 4,
+      question: 'What does HTML stand for?',
+      type: 'HTML',
+      answers: [
+        'HyperText Marking Language',
+        'HyperText Machine Learning',
+        'HyperText Markup Language',
+        'HyperTeeth Make Lunch',
+      ],
+      correct: 'HyperText Markup Language',
+    },
+    {
+      id: 5,
+      question: 'Which CSS rule allows you to push elements away from the selected element?',
+      type: 'CSS',
+      answers: ['padding', 'margin', 'float', 'position'],
+      correct: 'margin',
+    },
+    {
+      id: 6,
+      question: 'Which answer correctly displays the declaration and initialization of an array literal?',
+      type: 'JavaScript',
+      answers: ['var arr = {};', 'var arr;', 'var arr = [];', 'var arr = {a};'],
+    },
   ],
 };
 
