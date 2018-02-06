@@ -58,6 +58,7 @@ class App extends Component {
       content: quizQuestions.questions[counter].question,
       answers: quizQuestions.questions[counter].answers,
       correctAnswer: quizQuestions.questions[counter].correct,
+      typeOfCorrectAnswer: quizQuestions.questions[counter].type,
     });
   }
   componentWillMount() {
@@ -87,7 +88,7 @@ class App extends Component {
           onAnswerSelection={this.onAnswerSelection}
           selectedAnswer={this.state.selectedAnswer}
           correct={this.state.correctAnswer}
-          type={this.state.type}
+          type={this.state.typeOfCorrectAnswer}
           /*
           answers={quizQuestions.questions[0].answers}
           handleQuestionChange={this.handleQuestionChange}
