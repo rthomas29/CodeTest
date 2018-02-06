@@ -41,11 +41,7 @@ class App extends Component {
   }
   onAnswerSelection(e) {
     this.checkCorrect(e);
-    if (this.state.counter < quizQuestions.questions.length) {
-      setTimeout(() => this.handleQuestionChange(), 300);
-    } else {
-      alert('quiz over');
-    }
+    setTimeout(() => this.handleQuestionChange(), 500);
   }
   setUserAnswer(answer) {
     const updatedAnswersCount = update(this.state.answersCount, {
@@ -58,13 +54,17 @@ class App extends Component {
   }
   handleQuestionChange() {
     const counter = this.state.counter + 1;
-    this.setState({
-      counter: counter,
-      content: quizQuestions.questions[counter].question,
-      answers: quizQuestions.questions[counter].answers,
-      correctAnswer: quizQuestions.questions[counter].correct,
-      typeOfCorrectAnswer: quizQuestions.questions[counter].type,
-    });
+    if (counter < quizQuestions.questions.length) {
+      this.setState({
+        counter: counter,
+        content: quizQuestions.questions[counter].question,
+        answers: quizQuestions.questions[counter].answers,
+        correctAnswer: quizQuestions.questions[counter].correct,
+        typeOfCorrectAnswer: quizQuestions.questions[counter].type,
+      });
+    } else {
+      alert('quiz over');
+    }
   }
   componentWillMount() {
     this.setState({
