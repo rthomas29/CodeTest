@@ -8,7 +8,7 @@ const AnswerList = props => {
         <input
           type="radio"
           onChange={props.onAnswerSelection}
-          value={answer}
+          value={props.type}
           checked={props.selectedAnswer === answer}
         />
         {answer}
