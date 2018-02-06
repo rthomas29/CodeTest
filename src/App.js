@@ -19,9 +19,15 @@ class App extends Component {
         CSS: 0,
         JavaScript: 0,
       },
+      totalTypeCount: {
+        HTML: 0,
+        CSS: 0,
+        JavaScript: 0,
+      },
       questionCount: 1,
       counter: 0,
       typeOfCorrectAnswer: '',
+      typeOfQuestion: '',
       done: false,
     };
     this.handleQuestionChange = this.handleQuestionChange.bind(this);
@@ -38,13 +44,20 @@ class App extends Component {
   }
   checkCorrect(e) {
     if (e.currentTarget.nextSibling.innerHTML === this.state.correctAnswer) {
-      this.setUserAnswer(this.state.typeOfCorrectAnswer);
+      this.setUserAnswer(this.state.typeOfCorrectAnswer, this.state.typeOfCorrectAnswer);
       this.setState({ selectedAnswer: e.currentTarget.nextSibling.innerHTML });
     }
+    this.incrementTypeCount(this.state.typeOfCorrectAnswer);
   }
   onAnswerSelection(e) {
     this.checkCorrect(e);
     setTimeout(() => this.handleQuestionChange(), 500);
+  }
+  incrementTypeCount(type) {
+    const updateCategoryPoint = update(this.state.totalTypeCount, {
+      [type]: { $apply: currentValue => currentValue + 1 },
+    });
+    this.setState({ totalTypeCount: updateCategoryPoint });
   }
   setUserAnswer(answer) {
     const updatedAnswersCount = update(this.state.answersCount, {
