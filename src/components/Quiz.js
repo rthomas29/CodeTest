@@ -5,7 +5,7 @@ import AnswerList from './AnswerList';
 
 const Quiz = props => {
   return (
-    <div>
+    <div class="container">
       <Question content={props.content} />
       <AnswerList
         answers={props.answers}
