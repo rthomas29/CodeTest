@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import Quiz from './components/Quiz';
+import Results from './components/Results';
 import quizQuestions from './api/quizQuestions';
 import update from 'immutability-helper';
 import './App.css';
@@ -20,6 +21,7 @@ class App extends Component {
       },
       counter: 0,
       typeOfCorrectAnswer: '',
+      done: false,
     };
     this.handleQuestionChange = this.handleQuestionChange.bind(this);
     this.onAnswerSelection = this.onAnswerSelection.bind(this);
@@ -63,7 +65,7 @@ class App extends Component {
         typeOfCorrectAnswer: quizQuestions.questions[counter].type,
       });
     } else {
-      alert('quiz over');
+      this.setState({ done: true });
     }
   }
   componentWillMount() {
@@ -75,6 +77,9 @@ class App extends Component {
     });
   }
   render() {
+    if (this.state.done === true) {
+      return <Results results={this.state.answersCount} />;
+    }
     return (
       <div className="App">
         <header className="App-header">
@@ -89,11 +94,6 @@ class App extends Component {
           selectedAnswer={this.state.selectedAnswer}
           correct={this.state.correctAnswer}
           type={this.state.typeOfCorrectAnswer}
-          /*
-          answers={quizQuestions.questions[0].answers}
-          handleQuestionChange={this.handleQuestionChange}
-          correct={this.state.correctAnswer}
-          type={this.state.type} */
         />
       </div>
     );
