@@ -7,7 +7,7 @@ import '../stylesheets/Quiz.css';
 const Quiz = props => {
   return (
     <div className="container">
-      <Question content={props.content} />
+      <Question content={props.content} questionCount={props.questionCount} />
       <AnswerList
         answers={props.answers}
         onAnswerSelection={props.onAnswerSelection}

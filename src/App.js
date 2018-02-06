@@ -19,6 +19,7 @@ class App extends Component {
         CSS: 0,
         JavaScript: 0,
       },
+      questionCount: 1,
       counter: 0,
       typeOfCorrectAnswer: '',
       done: false,
@@ -56,9 +57,11 @@ class App extends Component {
   }
   handleQuestionChange() {
     const counter = this.state.counter + 1;
+    const questionCount = this.state.questionCount + 1;
     if (counter < quizQuestions.questions.length) {
       this.setState({
         counter: counter,
+        questionCount: questionCount,
         content: quizQuestions.questions[counter].question,
         answers: quizQuestions.questions[counter].answers,
         correctAnswer: quizQuestions.questions[counter].correct,
@@ -91,6 +94,7 @@ class App extends Component {
         </header> */}
         <Quiz
           content={this.state.content}
+          questionCount={this.state.questionCount}
           handleQuestionChange={this.handleQuestionChange}
           answers={this.state.answers}
           onAnswerSelection={this.onAnswerSelection}
