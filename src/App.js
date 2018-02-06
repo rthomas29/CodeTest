@@ -33,10 +33,15 @@ class App extends Component {
       selectedAnswer: answer,
     });
   }
+  checkCorrect(e) {
+    if (e.currentTarget.nextSibling.innerHTML === this.state.correctAnswer) {
+      this.setUserAnswer(this.state.typeOfCorrectAnswer);
+      this.setState({ selectedAnswer: e.currentTarget.nextSibling.innerHTML });
+    }
+  }
   onAnswerSelection(e) {
-    this.setUserAnswer(e.currentTarget.value);
+    this.checkCorrect(e);
     if (this.state.counter < quizQuestions.questions.length) {
-      console.log('triggered');
       setTimeout(() => this.handleQuestionChange(), 300);
     } else {
       alert('quiz over');
@@ -68,11 +73,6 @@ class App extends Component {
       correctAnswer: quizQuestions.questions[0].correct,
       typeOfCorrectAnswer: quizQuestions.questions[0].type,
     });
-  }
-  componentDidUpdate() {
-    // if (this.state.selectedAnswer === this.state.correctAnswer) {
-    //   this.handleQuestionChange();
-    // }
   }
   render() {
     return (

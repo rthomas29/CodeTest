@@ -11,7 +11,7 @@ const AnswerList = props => {
           value={props.type}
           checked={props.selectedAnswer === answer}
         />
-        {answer}
+        <span>{answer}</span>
       </li>
     );
   });
