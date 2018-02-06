@@ -85,10 +85,10 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <header className="App-header">
+        {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h3>Module 1 Study Guide</h3>
-        </header>
+        </header> */}
         <Quiz
           content={this.state.content}
           handleQuestionChange={this.handleQuestionChange}

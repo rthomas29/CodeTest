@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Question from './Question';
 import AnswerList from './AnswerList';
+import '../stylesheets/Quiz.css';
 
 const Quiz = props => {
   return (
-    <div class="container">
+    <div className="container">
       <Question content={props.content} />
       <AnswerList
         answers={props.answers}
