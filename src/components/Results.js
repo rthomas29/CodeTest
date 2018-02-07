@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Radar } from 'react-chartjs-2';
+import '../stylesheets/Results.css';
 
 const Results = props => {
   const htmlTotal = props.results.HTML;
@@ -10,9 +11,11 @@ const Results = props => {
     labels: ['HTML', 'CSS', 'JavaScript'],
     datasets: [
       {
-        label: 'Points per category',
+        label: '# of correct answers',
         data: [htmlTotal, cssTotal, jsTotal],
-        backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)'],
+        backgroundColor: ['rgba(50, 195, 255, 0.2)'],
+        pointHoverBackgroundColor: 'rgba(50, 195, 255)',
+        pointHoverBorderColor: 'rgba(50, 195, 255)',
       },
     ],
   };
@@ -20,16 +23,20 @@ const Results = props => {
     <div>
       <h3>Results</h3>
       <p>
-        HTML: {props.results.HTML} of {props.totalTypeCount.HTML} - {props.calculateTotal(props.results.HTML, 2)}
+        HTML: {props.results.HTML} of {props.totalTypeCount.HTML} -
+        {props.calculateTotal(props.results.HTML, props.totalTypeCount.HTML)}
       </p>
       <p>
-        CSS: {props.results.CSS} of {props.totalTypeCount.CSS} - {props.calculateTotal(props.results.CSS, 2)}
+        CSS: {props.results.CSS} of {props.totalTypeCount.CSS} -
+        {props.calculateTotal(props.results.CSS, props.totalTypeCount.CSS)}
       </p>
       <p>
-        JavaScript: {props.results.JavaScript} of {props.totalTypeCount.JavaScript} -{' '}
-        {props.calculateTotal(props.results.JavaScript, 2)}
+        JavaScript: {props.results.JavaScript} of {props.totalTypeCount.JavaScript} -
+        {props.calculateTotal(props.results.JavaScript, props.totalTypeCount.JavaScript)}
       </p>
-      <Radar data={data} width={150} height={300} options={{ maintainAspectRatio: false }} />
+      <div className="radar">
+        <Radar data={data} width={150} height={150} options={{ maintainAspectRatio: false }} />
+      </div>
     </div>
   );
 };
