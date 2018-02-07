@@ -17,9 +17,9 @@ const AnswerList = props => {
     );
   });
   return (
-    <form action="">
+    <div id="answer-list">
       <ul className="answerOption">{answer}</ul>
-    </form>
+    </div>
   );
 };
 

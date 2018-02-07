@@ -22,8 +22,10 @@ const Results = props => {
     ],
   };
   return (
-    <div>
-      <h3>Results</h3>
+    <div className="container">
+      <header className="header">
+        <h3>Results</h3>
+      </header>
       <p>
         HTML: {props.results.HTML} of {props.totalTypeCount.HTML} -
         {props.calculateTotal(props.results.HTML, props.totalTypeCount.HTML)}
