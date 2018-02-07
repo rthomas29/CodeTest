@@ -97,7 +97,13 @@ class App extends Component {
   }
   render() {
     if (this.state.done === true) {
-      return <Results results={this.state.answersCount} calculateTotal={this.calculateResults} />;
+      return (
+        <Results
+          results={this.state.answersCount}
+          calculateTotal={this.calculateResults}
+          totalTypeCount={this.state.totalTypeCount}
+        />
+      );
     }
     return (
       <div className="App">
