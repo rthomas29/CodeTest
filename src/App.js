@@ -107,10 +107,6 @@ class App extends Component {
     }
     return (
       <div className="App">
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h3>Module 1 Study Guide</h3>
-        </header> */}
         <Quiz
           content={this.state.content}
           questionCount={this.state.questionCount}
