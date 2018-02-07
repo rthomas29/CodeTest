@@ -1,23 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Question from './Question';
 import AnswerList from './AnswerList';
 import '../stylesheets/Quiz.css';
-
-const Quiz = props => {
-  return (
-    <div className="container">
-      <Question content={props.content} questionCount={props.questionCount} />
-      <AnswerList
-        answers={props.answers}
-        onAnswerSelection={props.onAnswerSelection}
-        selectedAnswer={props.selectedAnswer}
-        correct={props.correct}
-        type={props.type}
-      />
-    </div>
-  );
-};
+class Quiz extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div className="container" key={this.props.questionCount}>
+        <Question content={this.props.content} questionCount={this.props.questionCount} />
+        <AnswerList
+          answers={this.props.answers}
+          onAnswerSelection={this.props.onAnswerSelection}
+          selectedAnswer={this.props.selectedAnswer}
+          correct={this.props.correct}
+          type={this.props.type}
+        />
+      </div>
+    );
+  }
+}
 
 export default Quiz;
 

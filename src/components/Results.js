@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Radar } from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
 
 import '../stylesheets/Results.css';
 
@@ -13,15 +13,16 @@ const Results = props => {
     datasets: [
       {
         label: '# of correct answers',
+        backgroundColor: ['rgba(50, 195, 255, 0.2)', '#FF6384', '#36A2EB'],
         data: [htmlTotal, cssTotal, jsTotal],
-        backgroundColor: ['rgba(50, 195, 255, 0.2)'],
-        pointHoverBackgroundColor: 'rgba(50, 195, 255)',
-        pointHoverBorderColor: 'rgba(50, 195, 255)',
+        hoverBackgroundColor: ['rgba(50, 195, 255, 0.2)', '#FF6384', '#36A2EB'],
+        pointHoverBorderColor: 'rgba(50, 195, 255, 0.2)',
+        pointBackgroundColor: 'rgba(23, 27, 236, 0.2)',
       },
     ],
   };
   return (
-    <div className="container">
+    <div>
       <h3>Results</h3>
       <p>
         HTML: {props.results.HTML} of {props.totalTypeCount.HTML} -
@@ -36,7 +37,7 @@ const Results = props => {
         {props.calculateTotal(props.results.JavaScript, props.totalTypeCount.JavaScript)}
       </p>
       <div className="radar">
-        <Radar data={data} width={150} height={150} options={{ maintainAspectRatio: false }} />
+        <Doughnut data={data} width={150} height={150} options={{ maintainAspectRatio: false }} />
       </div>
     </div>
   );
