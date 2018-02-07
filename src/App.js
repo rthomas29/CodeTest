@@ -29,7 +29,6 @@ class App extends Component {
       typeOfCorrectAnswer: '',
       typeOfQuestion: '',
       done: false,
-      questionId: 0,
     };
     this.handleQuestionChange = this.handleQuestionChange.bind(this);
     this.onAnswerSelection = this.onAnswerSelection.bind(this);
@@ -52,7 +51,7 @@ class App extends Component {
   }
   onAnswerSelection(e) {
     this.checkCorrect(e);
-    setTimeout(() => this.handleQuestionChange(), 500);
+    setTimeout(() => this.handleQuestionChange(), 300);
   }
   incrementTypeCount(type) {
     const updateCategoryPoint = update(this.state.totalTypeCount, {
@@ -80,7 +79,6 @@ class App extends Component {
         answers: quizQuestions.questions[counter].answers,
         correctAnswer: quizQuestions.questions[counter].correct,
         typeOfCorrectAnswer: quizQuestions.questions[counter].type,
-        questionId: quizQuestions.questions[counter].id,
       });
     } else {
       this.setState({ done: true });
@@ -95,7 +93,6 @@ class App extends Component {
       answers: quizQuestions.questions[0].answers,
       correctAnswer: quizQuestions.questions[0].correct,
       typeOfCorrectAnswer: quizQuestions.questions[0].type,
-      questionId: quizQuestions.questions[0].id,
     });
   }
   render() {
@@ -123,7 +120,6 @@ class App extends Component {
           selectedAnswer={this.state.selectedAnswer}
           correct={this.state.correctAnswer}
           type={this.state.typeOfCorrectAnswer}
-          questionId={this.state.questionId}
         />
       </div>
     );
