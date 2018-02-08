@@ -47,6 +47,54 @@ const quizQuestions = {
       answers: ['var arr = {};', 'var arr;', 'var arr = [];', 'var arr = {a};'],
       correct: 'var arr = [];',
     },
+    {
+      id: 7,
+      question: 'What is the function of the modulo (%) operator?',
+      type: 'JavaScript',
+      answers: [
+        'Evenly divides two numbers',
+        'Returns the remainder of two divided numbers',
+        'Returns the percentage of the sum of both numbers',
+        'Rounds division to nearest whole integer',
+      ],
+      correct: 'Returns the remainder of two divided numbers',
+    },
+    {
+      id: 8,
+      question: 'Which option shows the correct method of attaching images to the img tag?',
+      type: 'HTML',
+      answers: [
+        '<img src="/images/myImage.png"',
+        '<img src="/images/myImage.png" />',
+        '<img href="http://www.example.com/image" />',
+        '<img source="/images/myImage/png" />',
+      ],
+      correct: '<img src="/images/myImage.png" />',
+    },
+    {
+      id: 9,
+      question: 'Where should the CSS file be referenced in the HTML?',
+      type: 'CSS',
+      answers: [
+        'Inside the head tag',
+        'At the end of the body tag',
+        'Inside the body tag',
+        'Using the import statement in your CSS',
+      ],
+      correct: 'Inside the head tag',
+    },
+    {
+      id: 10,
+      question: 'What is the difference between a parameter and an argument in a function?',
+      type: 'JavaScript',
+      answers: [
+        'There is no difference',
+        'Parameters are values passed at call time, and arguments are included at declaration time',
+        'Arguments are values passed at call time, and parameters are included at declaration time',
+        'Parameters define the behavior of the function, while arguments do not',
+      ],
+      correct: 'Arguments are values passed at call time, and parameters are included at declaration time',
+    },
   ],
 };
 
