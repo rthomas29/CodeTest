@@ -5,7 +5,7 @@ import '../stylesheets/Question.css';
 const Question = props => {
   return (
     <div>
-      <p>
+      <p className="lead">
         {props.questionCount}. {props.content}
       </p>
     </div>

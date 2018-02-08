@@ -24,12 +24,6 @@ const Results = props => {
       },
     ],
   };
-
-  const chartOptions = {
-    legend: {
-      display: false,
-    },
-  };
   return (
     <div id="results-div" className="container d-flex flex-column justify-content-center align-items-center">
       <div className="">
@@ -50,7 +44,8 @@ const Results = props => {
             options={{
               maintainAspectRatio: false,
               legend: {
-                display: false,
+                display: true,
+                position: 'right',
               },
             }}
           />

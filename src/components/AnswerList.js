@@ -12,7 +12,7 @@ const AnswerList = props => {
           value={props.type}
           checked={props.selectedAnswer === answer}
         />
-        <span>{answer}</span>
+        <span className="font-weight-light">{answer}</span>
       </li>
     );
   });
