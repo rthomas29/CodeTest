@@ -97,6 +97,11 @@ class Results extends Component {
               <ModalBody>
                 <aside>Let's take a closer look at your results</aside>
                 <HorizontalBar data={this.barData} options={this.barOptions} width={100} height={100} />
+                <aside>
+                  <p className="lead">
+                    Out of {this.props.questionCount} questions, you answered {this.totalCorrect} correctly.<br />
+                  </p>
+                </aside>
               </ModalBody>
               <ModalFooter>
                 <Button color="primary" onClick={this.handleToggle}>
