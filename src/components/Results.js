@@ -46,29 +46,23 @@ class Results extends Component {
       labels: ['HTML', 'CSS', 'JavaScript'],
       datasets: [
         {
-          label: 'Point per category breakdown',
           data: [this.htmlTotal, this.cssTotal, this.jsTotal],
           borderWidth: 1,
+          backgroundColor: ['rgba(63,195,128, 0.2)', 'rgba(239,72,54,0.2)', 'rgba(65,131,215,0.2)'],
         },
       ],
     };
     this.barOptions = {
       legend: {
-        display: true,
-        position: 'top',
+        display: false,
       },
       maintainAspectRatio: false,
       scales: {
-        yAxes: [
+        xAxes: [
           {
             ticks: {
               beginAtZero: true,
             },
-          },
-        ],
-        xAxes: [
-          {
-            barThickness: 100,
           },
         ],
       },
@@ -87,7 +81,7 @@ class Results extends Component {
               How'd you do?
             </h3>
           </header>
-          <aside>
+          <aside id="aside">
             <p className="text-md-left lead">{`You answered ${this.props.calculateResults(
               this.totalCorrect,
               this.props.questionCount,
@@ -106,10 +100,7 @@ class Results extends Component {
               </ModalBody>
               <ModalFooter>
                 <Button color="primary" onClick={this.handleToggle}>
-                  Do Something
-                </Button>
-                <Button color="secondary" onClick={this.handleToggle}>
-                  Cancel
+                  Thanks for the info
                 </Button>
               </ModalFooter>
             </Modal>
