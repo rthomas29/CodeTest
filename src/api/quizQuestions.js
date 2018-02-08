@@ -61,15 +61,11 @@ const quizQuestions = {
     },
     {
       id: 8,
-      question: 'Which option shows the correct method of attaching images to the img tag?',
+      question:
+        'What HTML element is responsible for holding metadata for your webpage and is not rendered to the screen?',
       type: 'HTML',
-      answers: [
-        '<img src="/images/myImage.png"',
-        '<img src="/images/myImage.png" />',
-        '<img href="http://www.example.com/image" />',
-        '<img source="/images/myImage/png" />',
-      ],
-      correct: '<img src="/images/myImage.png" />',
+      answers: ['title', 'head', 'body', 'span'],
+      correct: 'head',
     },
     {
       id: 9,

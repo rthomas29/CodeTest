@@ -102,6 +102,7 @@ class App extends Component {
           results={this.state.answersCount}
           calculateResults={this.calculateResults}
           totalTypeCount={this.state.totalTypeCount}
+          questionCount={this.state.questionCount}
         />
       );
     }

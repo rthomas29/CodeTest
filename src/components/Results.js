@@ -25,15 +25,15 @@ const Results = props => {
     ],
   };
   return (
-    <div id="results-div" className="container">
-      <div className="d-flex flex-column">
+    <div id="results-div" className="container d-flex flex-column justify-content-center align-items-center">
+      <div className="">
         <header className="header">
           <h3>Results</h3>
         </header>
         <aside>
           <p className="text-primary">{`You answered ${props.calculateResults(
             totalCorrect,
-            10,
+            props.questionCount,
           )} of questions correctly`}</p>
         </aside>
         <div className="radar">

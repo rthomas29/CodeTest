@@ -1,9 +1,11 @@
 body {
-  margin: 0;
-  padding: 0;
+  height: 100%;
   font-family: 'Roboto', arial, sans-serif;
 }
 
+#quiz {
+  margin-top: 120px;
+}
 .fade-enter {
   opacity: 0;
 }
