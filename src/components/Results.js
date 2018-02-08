@@ -26,12 +26,15 @@ const Results = props => {
   };
   return (
     <div id="results-div" className="container">
-      <div className="d-flex flex-column justify-content-start">
+      <div className="d-flex flex-column">
         <header className="header">
           <h3>Results</h3>
         </header>
         <aside>
-          <p className="lead">{`You answered ${props.calculateResults(totalCorrect, 10)} of questions correctly`}</p>
+          <p className="text-primary">{`You answered ${props.calculateResults(
+            totalCorrect,
+            10,
+          )} of questions correctly`}</p>
         </aside>
         <div className="radar">
           <Doughnut data={data} width={150} height={150} options={{ maintainAspectRatio: false }} />
