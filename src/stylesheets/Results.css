@@ -2,3 +2,8 @@
   font-size: 28px;
   word-spacing: 2px;
 }
+
+.small {
+  max-height: 80px;
+  width: 400px;
+}

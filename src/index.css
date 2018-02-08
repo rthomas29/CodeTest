@@ -3,6 +3,10 @@ body {
   font-family: 'Roboto', arial, sans-serif;
 }
 
+canvas {
+  max-height: calc(100vh - 225px);
+}
+
 #quiz,
 #results-div {
   padding: 10px;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Doughnut } from 'react-chartjs-2';
+import { Doughnut, HorizontalBar } from 'react-chartjs-2';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import '../stylesheets/Results.css';
 import 'chartjs-plugin-datalabels';
@@ -42,6 +42,37 @@ class Results extends Component {
         },
       },
     };
+    this.barData = {
+      labels: ['HTML', 'CSS', 'JavaScript'],
+      datasets: [
+        {
+          label: 'Point per category breakdown',
+          data: [this.htmlTotal, this.cssTotal, this.jsTotal],
+          borderWidth: 1,
+        },
+      ],
+    };
+    this.barOptions = {
+      legend: {
+        display: true,
+        position: 'top',
+      },
+      maintainAspectRatio: false,
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              beginAtZero: true,
+            },
+          },
+        ],
+        xAxes: [
+          {
+            barThickness: 100,
+          },
+        ],
+      },
+    };
     this.handleToggle = this.handleToggle.bind(this);
   }
   handleToggle() {
@@ -66,20 +97,17 @@ class Results extends Component {
             </Button>
           </aside>
           <div className="doughnut">
-            <Doughnut data={this.data} width={150} height={150} options={this.options} />
-            <Modal isOpen={this.state.modal} toggle={this.handleToggle} className={this.props.className}>
-              <ModalHeader toggle={this.handleToggle}>Modal title</ModalHeader>
+            <Doughnut data={this.data} options={this.options} />
+            <Modal isOpen={this.state.modal} toggle={this.handleToggle} className="small">
+              <ModalHeader toggle={this.handleToggle}>Breakdown</ModalHeader>
               <ModalBody>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                deserunt mollit anim id est laborum.
+                <aside>Let's take a closer look at your results</aside>
+                <HorizontalBar data={this.barData} options={this.barOptions} width={100} height={100} />
               </ModalBody>
               <ModalFooter>
                 <Button color="primary" onClick={this.handleToggle}>
                   Do Something
-                </Button>{' '}
+                </Button>
                 <Button color="secondary" onClick={this.handleToggle}>
                   Cancel
                 </Button>
