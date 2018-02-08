@@ -3,7 +3,8 @@ body {
   font-family: 'Roboto', arial, sans-serif;
 }
 
-#quiz {
+#quiz,
+#results-div {
   margin-top: 120px;
 }
 .fade-enter {

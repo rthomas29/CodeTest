@@ -24,6 +24,12 @@ const Results = props => {
       },
     ],
   };
+
+  const chartOptions = {
+    legend: {
+      display: false,
+    },
+  };
   return (
     <div id="results-div" className="container d-flex flex-column justify-content-center align-items-center">
       <div className="">
@@ -37,7 +43,17 @@ const Results = props => {
           )} of questions correctly`}</p>
         </aside>
         <div className="radar">
-          <Doughnut data={data} width={150} height={150} options={{ maintainAspectRatio: false }} />
+          <Doughnut
+            data={data}
+            width={150}
+            height={150}
+            options={{
+              maintainAspectRatio: false,
+              legend: {
+                display: false,
+              },
+            }}
+          />
         </div>
       </div>
     </div>
