@@ -100,7 +100,7 @@ class App extends Component {
       return (
         <Results
           results={this.state.answersCount}
-          calculateTotal={this.calculateResults}
+          calculateResults={this.calculateResults}
           totalTypeCount={this.state.totalTypeCount}
         />
       );

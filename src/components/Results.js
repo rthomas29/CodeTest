@@ -5,9 +5,12 @@ import { Doughnut } from 'react-chartjs-2';
 import '../stylesheets/Results.css';
 
 const Results = props => {
+  // keep the chart, remove the paragraphs.
+  // show total correct divided by total, then give more details about graph.
   const htmlTotal = props.results.HTML;
   const cssTotal = props.results.CSS;
   const jsTotal = props.results.JavaScript;
+  const totalCorrect = props.results.HTML + props.results.CSS + props.results.JavaScript;
   const data = {
     labels: ['HTML', 'CSS', 'JavaScript'],
     datasets: [
@@ -22,24 +25,17 @@ const Results = props => {
     ],
   };
   return (
-    <div className="container">
-      <header className="header">
-        <h3>Results</h3>
-      </header>
-      <p>
-        HTML: {props.results.HTML} of {props.totalTypeCount.HTML} -
-        {props.calculateTotal(props.results.HTML, props.totalTypeCount.HTML)}
-      </p>
-      <p>
-        CSS: {props.results.CSS} of {props.totalTypeCount.CSS} -
-        {props.calculateTotal(props.results.CSS, props.totalTypeCount.CSS)}
-      </p>
-      <p>
-        JavaScript: {props.results.JavaScript} of {props.totalTypeCount.JavaScript} -
-        {props.calculateTotal(props.results.JavaScript, props.totalTypeCount.JavaScript)}
-      </p>
-      <div className="radar">
-        <Doughnut data={data} width={150} height={150} options={{ maintainAspectRatio: false }} />
+    <div id="results-div" className="container">
+      <div className="d-flex flex-column justify-content-start">
+        <header className="header">
+          <h3>Results</h3>
+        </header>
+        <aside>
+          <p className="lead">{`You answered ${props.calculateResults(totalCorrect, 10)} of questions correctly`}</p>
+        </aside>
+        <div className="radar">
+          <Doughnut data={data} width={150} height={150} options={{ maintainAspectRatio: false }} />
+        </div>
       </div>
     </div>
   );
