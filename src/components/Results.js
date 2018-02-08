@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Doughnut } from 'react-chartjs-2';
-
 import '../stylesheets/Results.css';
+import 'chartjs-plugin-datalabels';
 
 const Results = props => {
   // keep the chart, remove the paragraphs.
@@ -24,31 +24,36 @@ const Results = props => {
       },
     ],
   };
+  const options = {
+    maintainAspectRatio: false,
+    responsive: true,
+    legend: {
+      display: true,
+      position: 'right',
+    },
+    plugins: {
+      datalabels: {
+        textAlign: 'center',
+        color: '#fff',
+      },
+    },
+  };
   return (
     <div id="results-div" className="container d-flex flex-column justify-content-center align-items-center">
       <div className="">
         <header className="header">
-          <h3>Results</h3>
+          <h3 id="results-header" className="font-weight-light">
+            How'd you do?
+          </h3>
         </header>
         <aside>
-          <p className="text-primary">{`You answered ${props.calculateResults(
+          <p className="text-md-left lead">{`You answered ${props.calculateResults(
             totalCorrect,
             props.questionCount,
-          )} of questions correctly`}</p>
+          )} of the questions correctly`}</p>
         </aside>
         <div className="radar">
-          <Doughnut
-            data={data}
-            width={150}
-            height={150}
-            options={{
-              maintainAspectRatio: false,
-              legend: {
-                display: true,
-                position: 'right',
-              },
-            }}
-          />
+          <Doughnut data={data} width={150} height={150} options={options} />
         </div>
       </div>
     </div>
