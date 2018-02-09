@@ -32,6 +32,7 @@ class App extends Component {
     };
     this.handleQuestionChange = this.handleQuestionChange.bind(this);
     this.onAnswerSelection = this.onAnswerSelection.bind(this);
+    this.checkCorrect = this.checkCorrect.bind(this);
   }
   updateUserCount(answer) {
     const updatedAnswersCount = update(this.state.answersCount, {
@@ -44,16 +45,14 @@ class App extends Component {
   }
   checkCorrect(e) {
     if (this.state.selectedAnswer === this.state.correctAnswer) {
-      this.setUserAnswer(this.state.typeOfCorrectAnswer, this.state.typeOfCorrectAnswer);
-      this.setState({ selectedAnswer: e.currentTarget.nextSibling.innerHTML });
+      this.setUserAnswer(this.state.typeOfCorrectAnswer);
     }
+    setTimeout(() => this.handleQuestionChange(), 300);
     this.incrementTypeCount(this.state.typeOfCorrectAnswer);
   }
   onAnswerSelection(e) {
     this.setState({ selectedAnswer: e.currentTarget.nextSibling.innerHTML });
-    console.log('click');
     // this.checkCorrect(e);
-    // setTimeout(() => this.handleQuestionChange(), 300);
   }
   incrementTypeCount(type) {
     const updateCategoryPoint = update(this.state.totalTypeCount, {
@@ -89,9 +88,6 @@ class App extends Component {
   calculateResults(count, total) {
     return `${Math.round(count / total * 100)}%`;
   }
-  onInputSelect(e) {
-    console.log(e.currentTarget.nextSibling.innerHTML);
-  }
   componentWillMount() {
     this.setState({
       content: quizQuestions.questions[0].question,
@@ -123,6 +119,7 @@ class App extends Component {
           correct={this.state.correctAnswer}
           type={this.state.typeOfCorrectAnswer}
           whenInputClicked={this.onInputSelect}
+          checkCorrect={this.checkCorrect}
         />
       </div>
     );

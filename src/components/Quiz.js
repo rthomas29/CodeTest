@@ -17,6 +17,7 @@ class Quiz extends Component {
           selectedAnswer={this.props.selectedAnswer}
           correct={this.props.correct}
           type={this.props.type}
+          checkCorrect={this.props.checkCorrect}
         />
       </div>
     );
