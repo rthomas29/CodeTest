@@ -12,6 +12,7 @@ class App extends Component {
     super();
     this.state = {
       landing: true,
+      showHome: false,
       content: '',
       answers: [],
       selectedAnswer: '',
@@ -35,6 +36,7 @@ class App extends Component {
     this.handleQuestionChange = this.handleQuestionChange.bind(this);
     this.onAnswerSelection = this.onAnswerSelection.bind(this);
     this.checkCorrect = this.checkCorrect.bind(this);
+    this.toggleLanding = this.toggleLanding.bind(this);
   }
   updateUserCount(answer) {
     const updatedAnswersCount = update(this.state.answersCount, {
@@ -84,8 +86,14 @@ class App extends Component {
         selectedAnswer: '',
       });
     } else {
-      this.setState({ done: true });
+      this.toggleDone();
     }
+  }
+  toggleDone() {
+    this.setState({ done: !this.state.done });
+  }
+  toggleLanding() {
+    this.setState({ landing: !this.state.landing });
   }
   calculateResults(count, total) {
     return `${Math.round(count / total * 100)}%`;
@@ -100,7 +108,7 @@ class App extends Component {
   }
   render() {
     if (this.state.landing === true) {
-      return <Landing />;
+      return <Landing toggleLanding={this.toggleLanding} />;
     }
     if (this.state.done === true) {
       return (
@@ -109,6 +117,7 @@ class App extends Component {
           calculateResults={this.calculateResults}
           totalTypeCount={this.state.totalTypeCount}
           questionCount={this.state.questionCount}
+          toggleLanding={this.toggleLanding}
         />
       );
     }
