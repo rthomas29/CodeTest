@@ -1,15 +1,16 @@
 #answer-list {
   text-align: left;
 }
-#answer-list ul,
-#answer-list li {
+#answer-list ul {
   margin: 0;
+  word-spacing: 2px;
 }
 
 #answer-list li {
   list-style: none;
+  word-spacing: 2px;
   margin: 5px;
-  font-size: 14px;
+  font-size: 20px;
   padding: 10px;
 }
 

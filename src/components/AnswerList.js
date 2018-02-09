@@ -21,7 +21,7 @@ const AnswerList = props => {
     );
   });
   return (
-    <div id="answer-list" className="d-flex flex-row justify-content-center">
+    <div id="answer-list" className="d-flex flex-column justify-content-center">
       <div className="answer-list align-self-">
         <ul className="answerOption">{answer}</ul>
       </div>
