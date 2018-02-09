@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Doughnut, HorizontalBar } from 'react-chartjs-2';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import ResultDetails from './ResultDetails';
 import '../stylesheets/Results.css';
 import 'chartjs-plugin-datalabels';
 // TODO: handle situation where user gets no answers correct
@@ -100,19 +101,7 @@ class Results extends Component {
                 <ModalBody>
                   <aside>Let's take a closer look at your results</aside>
                   <HorizontalBar data={this.barData} options={this.barOptions} width={100} height={100} />
-                  <h4>HTML</h4>
-                  <p>
-                    You answered {this.props.results.HTML} out of {this.props.totalTypeCount.HTML} questions correctly.
-                  </p>
-                  <h4>CSS</h4>
-                  <p>
-                    You answered {this.props.results.CSS} out of {this.props.totalTypeCount.CSS} questions correctly.
-                  </p>
-                  <h4>JavaScript</h4>
-                  <p>
-                    You answered {this.props.results.JavaScript} out of {this.props.totalTypeCount.JavaScript} questions
-                    correctly.
-                  </p>
+                  <ResultDetails results={this.props.results} totalTypeCount={this.props.totalTypeCount} />
                 </ModalBody>
                 <ModalFooter>
                   <Button color="primary" onClick={this.handleToggle}>
