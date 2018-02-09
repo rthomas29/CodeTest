@@ -9,7 +9,7 @@ class Quiz extends Component {
   }
   render() {
     return (
-      <div id="quiz" className="container" key={this.props.questionCount}>
+      <div id="quiz" className="container w-50" key={this.props.questionCount}>
         <Question content={this.props.content} questionCount={this.props.questionCount} />
         <AnswerList
           answers={this.props.answers}

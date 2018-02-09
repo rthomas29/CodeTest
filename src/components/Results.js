@@ -74,9 +74,9 @@ class Results extends Component {
   }
   render() {
     return (
-      <div id="results-div" className="container">
-        <div className="col">
-          <header className="header">
+      <div id="results-div" className="container w-75 d-flex justify-content-center">
+        <div className="">
+          <header className="header text-center">
             <h3 id="results-header" className="font-weight-light">
               How'd you do?
             </h3>
