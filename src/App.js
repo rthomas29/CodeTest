@@ -43,7 +43,7 @@ class App extends Component {
     });
   }
   checkCorrect(e) {
-    if (e.currentTarget.nextSibling.innerHTML === this.state.correctAnswer) {
+    if (this.state.selectedAnswer === this.state.correctAnswer) {
       this.setUserAnswer(this.state.typeOfCorrectAnswer, this.state.typeOfCorrectAnswer);
       this.setState({ selectedAnswer: e.currentTarget.nextSibling.innerHTML });
     }

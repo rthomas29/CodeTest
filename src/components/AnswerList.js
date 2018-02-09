@@ -4,12 +4,15 @@ import { Button } from 'reactstrap';
 import '../stylesheets/AnswerList.css';
 
 const AnswerList = props => {
+  const logThing = () => {
+    console.log(props.selectedAnswer);
+  };
   const answer = props.answers.map(answer => {
     return (
       <li>
         <input
           type="radio"
-          onChange={props.onAnswerSelection}
+          {/* onChange={props.onAnswerSelection} */}
           value={props.type}
           checked={props.selectedAnswer === answer}
         />
@@ -23,7 +26,9 @@ const AnswerList = props => {
         <ul className="answerOption">{answer}</ul>
       </div>
       <div className="btn align-self-center">
-        <Button color="primary">Submit</Button>
+        <Button color="primary" onClick={logThing}>
+          Submit
+        </Button>
       </div>
     </div>
   );
