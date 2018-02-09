@@ -85,7 +85,7 @@ class Results extends Component {
             <div className="graph">
               <aside>
                 <p className="text-md-left lead">
-                  Out of {this.props.questionCount} questions, you answered {this.totalCorrect} correctly.<br />
+                  You answered {this.props.questionCount} out of {this.totalCorrect} questions correctly.<br />
                   <Button id="button" color="primary" onClick={this.handleToggle} className="float-left">
                     More Details
                   </Button>

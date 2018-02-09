@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'reactstrap';
 import '../stylesheets/AnswerList.css';
 
 const AnswerList = props => {
@@ -17,8 +18,13 @@ const AnswerList = props => {
     );
   });
   return (
-    <div id="answer-list">
-      <ul className="answerOption">{answer}</ul>
+    <div id="answer-list" className="d-flex flex-row justify-content-center">
+      <div className="answer-list align-self-">
+        <ul className="answerOption">{answer}</ul>
+      </div>
+      <div className="btn align-self-center">
+        <Button color="primary">Submit</Button>
+      </div>
     </div>
   );
 };
