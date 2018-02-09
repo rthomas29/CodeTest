@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import Quiz from './components/Quiz';
+import Landing from './components/Landing';
 import Results from './components/Results';
 import quizQuestions from './api/quizQuestions';
 import update from 'immutability-helper';
@@ -10,6 +11,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      landing: true,
       content: '',
       answers: [],
       selectedAnswer: '',
@@ -97,6 +99,9 @@ class App extends Component {
     });
   }
   render() {
+    if (this.state.landing === true) {
+      return <Landing />;
+    }
     if (this.state.done === true) {
       return (
         <Results
