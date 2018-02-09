@@ -33,7 +33,7 @@ class Results extends Component {
       responsive: true,
       legend: {
         display: true,
-        position: 'right',
+        position: 'bottom',
       },
       plugins: {
         datalabels: {
@@ -74,41 +74,39 @@ class Results extends Component {
   }
   render() {
     return (
-      <div id="results-div" className="container d-flex flex-column justify-content-center align-items-center">
-        <div className="">
+      <div id="results-div" className="container">
+        <div className="col">
           <header className="header">
             <h3 id="results-header" className="font-weight-light">
               How'd you do?
             </h3>
           </header>
-          <aside id="aside">
-            <p className="text-md-left lead">{`You answered ${this.props.calculateResults(
-              this.totalCorrect,
-              this.props.questionCount,
-            )} of the questions correctly.`}</p>
-            <Button color="primary" onClick={this.handleToggle}>
-              More Details
-            </Button>
-          </aside>
-          <div className="doughnut">
-            <Doughnut data={this.data} options={this.options} />
-            <Modal isOpen={this.state.modal} toggle={this.handleToggle} className="small">
-              <ModalHeader toggle={this.handleToggle}>Breakdown</ModalHeader>
-              <ModalBody>
-                <aside>Let's take a closer look at your results</aside>
-                <HorizontalBar data={this.barData} options={this.barOptions} width={100} height={100} />
-                <aside>
-                  <p className="lead">
-                    Out of {this.props.questionCount} questions, you answered {this.totalCorrect} correctly.<br />
-                  </p>
-                </aside>
-              </ModalBody>
-              <ModalFooter>
-                <Button color="primary" onClick={this.handleToggle}>
-                  Thanks for the info
-                </Button>
-              </ModalFooter>
-            </Modal>
+          <div className="main-results d-flex flex-row">
+            <div className="graph">
+              <aside>
+                <p className="text-md-left lead">
+                  Out of {this.props.questionCount} questions, you answered {this.totalCorrect} correctly.<br />
+                  <Button id="button" color="primary" onClick={this.handleToggle} className="float-left">
+                    More Details
+                  </Button>
+                </p>
+              </aside>
+            </div>
+            <div className="doughnut">
+              <Doughnut data={this.data} options={this.options} />
+              <Modal isOpen={this.state.modal} toggle={this.handleToggle} className="small">
+                <ModalHeader toggle={this.handleToggle}>Breakdown</ModalHeader>
+                <ModalBody>
+                  <aside>Let's take a closer look at your results</aside>
+                  <HorizontalBar data={this.barData} options={this.barOptions} width={100} height={100} />
+                </ModalBody>
+                <ModalFooter>
+                  <Button color="primary" onClick={this.handleToggle}>
+                    Thanks for the info
+                  </Button>
+                </ModalFooter>
+              </Modal>
+            </div>
           </div>
         </div>
       </div>

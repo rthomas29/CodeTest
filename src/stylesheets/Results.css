@@ -8,8 +8,9 @@
   width: 400px;
 }
 
-#aside {
+#button {
   margin: 20px;
+  margin-left: 0;
 }
 
 p {
