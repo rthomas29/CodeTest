@@ -12,9 +12,9 @@ const AnswerList = props => {
       <li>
         <input
           type="radio"
-          {/* onChange={props.onAnswerSelection} */}
           value={props.type}
           checked={props.selectedAnswer === answer}
+          onChange={props.onAnswerSelection}
         />
         <span className="font-weight-light">{answer}</span>
       </li>
