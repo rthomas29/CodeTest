@@ -26,7 +26,7 @@ const AnswerList = props => {
         <ul className="answerOption">{answer}</ul>
       </div>
       <div className="btn align-self-center">
-        <Button color="primary" onClick={props.checkCorrect}>
+        <Button color="primary" onClick={props.checkCorrect} disabled={!props.selectedAnswer}>
           Submit
         </Button>
       </div>

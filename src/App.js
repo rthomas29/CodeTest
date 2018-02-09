@@ -52,7 +52,6 @@ class App extends Component {
   }
   onAnswerSelection(e) {
     this.setState({ selectedAnswer: e.currentTarget.nextSibling.innerHTML });
-    // this.checkCorrect(e);
   }
   incrementTypeCount(type) {
     const updateCategoryPoint = update(this.state.totalTypeCount, {
@@ -80,6 +79,7 @@ class App extends Component {
         answers: quizQuestions.questions[counter].answers,
         correctAnswer: quizQuestions.questions[counter].correct,
         typeOfCorrectAnswer: quizQuestions.questions[counter].type,
+        selectedAnswer: '',
       });
     } else {
       this.setState({ done: true });

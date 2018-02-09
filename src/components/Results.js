@@ -4,7 +4,8 @@ import { Doughnut, HorizontalBar } from 'react-chartjs-2';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import '../stylesheets/Results.css';
 import 'chartjs-plugin-datalabels';
-
+// TODO: handle situation where user gets no answers correct
+// Should render a different results component
 class Results extends Component {
   constructor(props) {
     super(props);
@@ -85,7 +86,7 @@ class Results extends Component {
             <div className="graph">
               <aside>
                 <p className="text-md-left lead">
-                  You answered {this.props.questionCount} out of {this.totalCorrect} questions correctly.<br />
+                  You answered {this.totalCorrect} out of {this.props.questionCount} questions correctly.<br />
                   <Button id="button" color="primary" onClick={this.handleToggle} className="float-left">
                     More Details
                   </Button>
