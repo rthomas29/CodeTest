@@ -12,6 +12,8 @@ class Results extends Component {
     super(props);
     this.state = {
       modal: false,
+      nestedModal: false,
+      closeAll: false,
     };
     this.htmlTotal = this.props.results.HTML;
     this.cssTotal = this.props.results.CSS;
@@ -70,9 +72,13 @@ class Results extends Component {
       },
     };
     this.handleToggle = this.handleToggle.bind(this);
+    this.toggleNested = this.toggleNested.bind(this);
   }
   handleToggle() {
     this.setState({ modal: !this.state.modal });
+  }
+  toggleNested() {
+    this.setState({ nestedModal: !this.state.nestedModal, closeAll: false });
   }
   render() {
     return (
@@ -102,10 +108,32 @@ class Results extends Component {
                   <aside>Let's take a closer look at your results</aside>
                   <HorizontalBar data={this.barData} options={this.barOptions} width={100} height={100} />
                   <ResultDetails results={this.props.results} totalTypeCount={this.props.totalTypeCount} />
+                  <Button outline color="info" onClick={this.toggleNested}>
+                    Click for resources
+                  </Button>
+                  <Modal
+                    isOpen={this.state.nestedModal}
+                    toggle={this.toggleNested}
+                    onClosed={this.state.closeAll ? this.toggle : undefined}
+                  >
+                    <ModalHeader>Resources</ModalHeader>
+                    <ModalBody>
+                      <ul>
+                        <li>Resource 1</li>
+                        <li>Resource 1</li>
+                        <li>Resource 1</li>
+                      </ul>
+                    </ModalBody>
+                    <ModalFooter>
+                      <Button outline color="danger" onClick={this.toggleNested}>
+                        Close
+                      </Button>
+                    </ModalFooter>
+                  </Modal>
                 </ModalBody>
                 <ModalFooter>
                   <Button outline color="primary" onClick={this.handleToggle}>
-                    Thanks for the info
+                    Close
                   </Button>
                 </ModalFooter>
               </Modal>
