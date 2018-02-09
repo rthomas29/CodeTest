@@ -118,10 +118,17 @@ class Results extends Component {
                   >
                     <ModalHeader>Resources</ModalHeader>
                     <ModalBody>
+                      <h3>Front End Web Development</h3>
                       <ul>
-                        <li>Resource 1</li>
-                        <li>Resource 1</li>
-                        <li>Resource 1</li>
+                        <li>
+                          <a href="https://developer.mozilla.org/en-US/docs/Learn">MDN - Learn Web Development</a>
+                        </li>
+                        <li>
+                          <a href="https://www.freecodecamp.org/">FreeCodeCamp - From 0 to Web Developer</a>
+                        </li>
+                        <li>
+                          <a href="https://javascript.info/">JavaScript.info - Modern JavaScript tutorial</a>
+                        </li>
                       </ul>
                     </ModalBody>
                     <ModalFooter>
