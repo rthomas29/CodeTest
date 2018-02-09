@@ -104,7 +104,7 @@ class Results extends Component {
                   <ResultDetails results={this.props.results} totalTypeCount={this.props.totalTypeCount} />
                 </ModalBody>
                 <ModalFooter>
-                  <Button color="primary" onClick={this.handleToggle}>
+                  <Button outline color="primary" onClick={this.handleToggle}>
                     Thanks for the info
                   </Button>
                 </ModalFooter>
