@@ -5,7 +5,7 @@ const quizQuestions = {
       question: 'What does OOP stand for?',
       type: 'JavaScript',
       answers: ['Object Oriented Juice', 'Only One Jumanji', 'Object Oriented JavaScript', 'Oops Only JavaScript'],
-      correct: 'Object Oriented JavaScript',
+      correct: 'Object Oriented Programming',
     },
     {
       id: 2,
