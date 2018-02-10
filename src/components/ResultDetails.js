@@ -22,4 +22,9 @@ const ResultDetails = props => {
   );
 };
 
+ResultDetails.PropTypes = {
+  results: PropTypes.object.isRequired,
+  totalTypeCount: PropTypes.object.isRequired,
+};
+
 export default ResultDetails;

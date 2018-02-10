@@ -5,8 +5,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import ResultDetails from './ResultDetails';
 import '../stylesheets/Results.css';
 import 'chartjs-plugin-datalabels';
-// TODO: handle situation where user gets no answers correct
-// Should render a different results component
+
 class Results extends Component {
   constructor(props) {
     super(props);
@@ -156,5 +155,10 @@ class Results extends Component {
     );
   }
 }
+
+Results.PropTypes = {
+  questionCount: PropTypes.number.isRequired,
+  toggleLanding: PropTypes.func.isRequired,
+};
 
 export default Results;

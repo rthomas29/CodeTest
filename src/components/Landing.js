@@ -1,5 +1,5 @@
 import React from 'react';
-import coding from '../assets/Love-Coding.mp4';
+import PropTypes from 'prop-types';
 import '../stylesheets/Landing.css';
 import { Button } from 'reactstrap';
 
@@ -28,6 +28,10 @@ const Landing = props => {
       </div>
     </div>
   );
+};
+
+Landing.PropTypes = {
+  toggleLanding: PropTypes.func.isRequired,
 };
 
 export default Landing;

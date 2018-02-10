@@ -15,5 +15,6 @@ const Question = props => {
 export default Question;
 
 Question.PropTypes = {
+  questionCount: PropTypes.number.isRequired,
   content: PropTypes.string.isRequired,
 };
