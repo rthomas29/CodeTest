@@ -34,4 +34,11 @@ const AnswerList = props => {
   );
 };
 
+AnswerList.PropTypes = {
+  type: PropTypes.string.isRequired,
+  selectedAnswer: PropTypes.string.isRequired,
+  onAnswerSelection: PropTypes.func.isRequired,
+  checkCorrect: PropTypes.func.isRequired,
+};
+
 export default AnswerList;
