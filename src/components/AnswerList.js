@@ -4,9 +4,6 @@ import { Button } from 'reactstrap';
 import '../stylesheets/AnswerList.css';
 
 const AnswerList = props => {
-  const logThing = () => {
-    console.log(props.selectedAnswer);
-  };
   const answer = props.answers.map(answer => {
     return (
       <li>

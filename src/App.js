@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import Quiz from './components/Quiz';
 import Landing from './components/Landing';
 import Results from './components/Results';

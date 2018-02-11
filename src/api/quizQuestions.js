@@ -4,7 +4,7 @@ const quizQuestions = {
       id: 1,
       question: 'What does OOP stand for?',
       type: 'JavaScript',
-      answers: ['Object Oriented Juice', 'Only One Jumanji', 'Object Oriented JavaScript', 'Oops Only JavaScript'],
+      answers: ['Object Oriented Process', 'Only One Pineapple', 'Object Oriented Programming', 'Oops Only Papaya'],
       correct: 'Object Oriented Programming',
     },
     {
@@ -73,11 +73,11 @@ const quizQuestions = {
       type: 'CSS',
       answers: [
         'Inside the head tag',
-        'At the end of the body tag',
-        'Inside the body tag',
+        'Within a script tag',
+        'Immediately before the closing body tag',
         'Using the import statement in your CSS',
       ],
-      correct: 'Inside the head tag',
+      correct: 'Immediately before the closing body tag',
     },
     {
       id: 10,

@@ -4,9 +4,6 @@ import Question from './Question';
 import AnswerList from './AnswerList';
 import '../stylesheets/Quiz.css';
 class Quiz extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div id="quiz" className="container w-50" key={this.props.questionCount}>
