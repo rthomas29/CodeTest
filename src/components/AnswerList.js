@@ -10,7 +10,7 @@ AnswerList.PropTypes = {
   checkCorrect: PropTypes.func.isRequired,
 };
 
-const AnswerList = props => {
+export default function AnswerList(props) {
   const answer = props.answers.map(answer => {
     return (
       <li>
@@ -36,6 +36,4 @@ const AnswerList = props => {
       </div>
     </div>
   );
-};
-
-export default AnswerList;
+}

@@ -6,7 +6,7 @@ import { Button } from 'reactstrap';
 Landing.PropTypes = {
   toggleLanding: PropTypes.func.isRequired,
 };
-const Landing = props => {
+export default function Landing(props) {
   return (
     <div className="container d-flex justify-content-center" id="landing">
       <div className="row">
@@ -31,5 +31,4 @@ const Landing = props => {
       </div>
     </div>
   );
-};
-export default Landing;
+}
