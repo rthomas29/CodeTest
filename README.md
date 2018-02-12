@@ -10,3 +10,5 @@
 2. Add more questions to question pool.
 3. Implement dynamic resources list that changes based on result of assessment.
 4. Have different quiz types that vary by difficulty.
+
+## Pull Requests are welcomed! :grin:
