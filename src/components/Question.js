@@ -7,7 +7,7 @@ Question.PropTypes = {
   content: PropTypes.string.isRequired,
 };
 
-const Question = props => {
+export default function Question(props) {
   return (
     <div>
       <p className="lead">
@@ -15,6 +15,4 @@ const Question = props => {
       </p>
     </div>
   );
-};
-
-export default Question;
+}

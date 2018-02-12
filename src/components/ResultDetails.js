@@ -7,7 +7,7 @@ ResultDetails.PropTypes = {
   totalTypeCount: PropTypes.object.isRequired,
 };
 
-const ResultDetails = props => {
+export default function ResultDetails(props) {
   return (
     <section className="bar-details">
       <h4>HTML</h4>
@@ -24,6 +24,4 @@ const ResultDetails = props => {
       </p>
     </section>
   );
-};
-
-export default ResultDetails;
+}

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Question from './Question';
 import AnswerList from './AnswerList';
 import '../stylesheets/Quiz.css';
-class Quiz extends Component {
+export default class Quiz extends Component {
   static PropTypes = {
     questionCount: PropTypes.number.isRequired,
     content: PropTypes.string.isRequired,
@@ -30,5 +30,3 @@ class Quiz extends Component {
     );
   }
 }
-
-export default Quiz;

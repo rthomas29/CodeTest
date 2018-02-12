@@ -6,7 +6,7 @@ import ResultDetails from './ResultDetails';
 import '../stylesheets/Results.css';
 import 'chartjs-plugin-datalabels';
 
-class Results extends Component {
+export default class Results extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -159,5 +159,3 @@ class Results extends Component {
     );
   }
 }
-
-export default Results;
