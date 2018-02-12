@@ -79,6 +79,10 @@ class Results extends Component {
   toggleNested() {
     this.setState({ nestedModal: !this.state.nestedModal, closeAll: false });
   }
+  static PropTypes = {
+    questionCount: PropTypes.number.isRequired,
+    toggleLanding: PropTypes.func.isRequired,
+  };
   render() {
     return (
       <div id="results-div" className="container w-75 d-flex justify-content-center">
@@ -155,10 +159,5 @@ class Results extends Component {
     );
   }
 }
-
-Results.PropTypes = {
-  questionCount: PropTypes.number.isRequired,
-  toggleLanding: PropTypes.func.isRequired,
-};
 
 export default Results;

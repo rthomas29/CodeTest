@@ -4,6 +4,16 @@ import Question from './Question';
 import AnswerList from './AnswerList';
 import '../stylesheets/Quiz.css';
 class Quiz extends Component {
+  static PropTypes = {
+    questionCount: PropTypes.number.isRequired,
+    content: PropTypes.string.isRequired,
+    answers: PropTypes.array.isRequired,
+    onAnswerSelection: PropTypes.func.isRequired,
+    selectedAnswer: PropTypes.string.isRequired,
+    correct: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    checkCorrect: PropTypes.func.isRequired,
+  };
   render() {
     return (
       <div id="quiz" className="container w-50" key={this.props.questionCount}>
@@ -22,14 +32,3 @@ class Quiz extends Component {
 }
 
 export default Quiz;
-
-Quiz.PropTypes = {
-  questionCount: PropTypes.number.isRequired,
-  content: PropTypes.string.isRequired,
-  answers: PropTypes.array.isRequired,
-  onAnswerSelection: PropTypes.func.isRequired,
-  selectedAnswer: PropTypes.string.isRequired,
-  correct: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  checkCorrect: PropTypes.func.isRequired,
-};

@@ -2,6 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../stylesheets/Question.css';
 
+Question.PropTypes = {
+  questionCount: PropTypes.number.isRequired,
+  content: PropTypes.string.isRequired,
+};
+
 const Question = props => {
   return (
     <div>
@@ -13,8 +18,3 @@ const Question = props => {
 };
 
 export default Question;
-
-Question.PropTypes = {
-  questionCount: PropTypes.number.isRequired,
-  content: PropTypes.string.isRequired,
-};

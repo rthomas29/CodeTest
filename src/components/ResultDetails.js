@@ -2,6 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../stylesheets/ResultDetails.css';
 
+ResultDetails.PropTypes = {
+  results: PropTypes.object.isRequired,
+  totalTypeCount: PropTypes.object.isRequired,
+};
+
 const ResultDetails = props => {
   return (
     <section className="bar-details">
@@ -19,11 +24,6 @@ const ResultDetails = props => {
       </p>
     </section>
   );
-};
-
-ResultDetails.PropTypes = {
-  results: PropTypes.object.isRequired,
-  totalTypeCount: PropTypes.object.isRequired,
 };
 
 export default ResultDetails;

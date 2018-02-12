@@ -3,6 +3,13 @@ import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 import '../stylesheets/AnswerList.css';
 
+AnswerList.PropTypes = {
+  type: PropTypes.string.isRequired,
+  selectedAnswer: PropTypes.string.isRequired,
+  onAnswerSelection: PropTypes.func.isRequired,
+  checkCorrect: PropTypes.func.isRequired,
+};
+
 const AnswerList = props => {
   const answer = props.answers.map(answer => {
     return (
@@ -29,13 +36,6 @@ const AnswerList = props => {
       </div>
     </div>
   );
-};
-
-AnswerList.PropTypes = {
-  type: PropTypes.string.isRequired,
-  selectedAnswer: PropTypes.string.isRequired,
-  onAnswerSelection: PropTypes.func.isRequired,
-  checkCorrect: PropTypes.func.isRequired,
 };
 
 export default AnswerList;
