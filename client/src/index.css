@@ -1,0 +1,17 @@
+body {
+  height: 100%;
+  font-family: 'Roboto', arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  max-height: calc(100vh - 225px);
+  padding-top: 0;
+}
+
+#quiz,
+#results-div {
+  padding: 10px;
+  margin-top: 120px;
+}
