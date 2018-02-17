@@ -4,6 +4,7 @@ import Landing from './components/Landing';
 import Results from './components/Results';
 import quizQuestions from './api/quizQuestions';
 import update from 'immutability-helper';
+import axios from 'axios';
 import './App.css';
 
 class App extends Component {
@@ -31,6 +32,7 @@ class App extends Component {
       typeOfCorrectAnswer: '',
       typeOfQuestion: '',
       done: false,
+      users: [],
     };
     this.handleQuestionChange = this.handleQuestionChange.bind(this);
     this.onAnswerSelection = this.onAnswerSelection.bind(this);
@@ -105,6 +107,15 @@ class App extends Component {
       typeOfCorrectAnswer: quizQuestions.questions[0].type,
     });
   }
+  componentDidMount() {
+    axios
+      .get('/api')
+      .then(users => console.log(users))
+      .catch(err => {
+        throw err;
+      });
+    // this.setState({ users });
+  }
   render() {
     if (this.state.landing === true) {
       return <Landing toggleLanding={this.toggleLanding} />;
@@ -122,6 +133,7 @@ class App extends Component {
     }
     return (
       <div className="App">
+        {this.state.users}
         <Quiz
           content={this.state.content}
           questionCount={this.state.questionCount}
