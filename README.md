@@ -10,5 +10,6 @@
 2. Add more questions to question pool.
 3. Implement dynamic resources list that changes based on result of assessment.
 4. Have different quiz types that vary by difficulty.
+5. Add mLab addon to utilize MongoDB on Heroku.
 
 ## Pull Requests are welcomed! :grin:
