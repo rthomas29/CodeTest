@@ -2,6 +2,7 @@
 
 # dependencies
 client/node_modules
+server/node_modules
 
 # testing
 /coverage
@@ -21,3 +22,16 @@ yarn-debug.log*
 yarn-error.log*
 
 .eslintrc.json
+
+# Node build artifacts
+node_modules
+npm-debug.log
+
+# Local development
+*.env
+*.dev
+.DS_Store
+
+# Docker
+Dockerfile
+docker-compose.yml
