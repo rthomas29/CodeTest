@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Quiz from './components/Quiz';
 import Landing from './components/Landing';
 import Results from './components/Results';
-import quizQuestions from './api/quizQuestions';
 import update from 'immutability-helper';
 import axios from 'axios';
 import './App.css';
@@ -32,7 +31,7 @@ class App extends Component {
       typeOfCorrectAnswer: '',
       typeOfQuestion: '',
       done: false,
-      users: [],
+      quizQuestions: [],
     };
     this.handleQuestionChange = this.handleQuestionChange.bind(this);
     this.onAnswerSelection = this.onAnswerSelection.bind(this);
@@ -76,14 +75,14 @@ class App extends Component {
   handleQuestionChange() {
     const counter = this.state.counter + 1;
     const questionCount = this.state.questionCount + 1;
-    if (counter < quizQuestions.questions.length) {
+    if (counter < this.state.quizQuestions.length) {
       this.setState({
         counter: counter,
         questionCount: questionCount,
-        content: quizQuestions.questions[counter].question,
-        answers: quizQuestions.questions[counter].answers,
-        correctAnswer: quizQuestions.questions[counter].correct,
-        typeOfCorrectAnswer: quizQuestions.questions[counter].type,
+        content: this.state.quizQuestions[counter].question,
+        answers: this.state.quizQuestions[counter].answers,
+        correctAnswer: this.state.quizQuestions[counter].correct,
+        typeOfCorrectAnswer: this.state.quizQuestions[counter].type,
         selectedAnswer: '',
       });
     } else {
@@ -99,22 +98,21 @@ class App extends Component {
   calculateResults(count, total) {
     return `${Math.round(count / total * 100)}%`;
   }
-  componentWillMount() {
-    this.setState({
-      content: quizQuestions.questions[0].question,
-      answers: quizQuestions.questions[0].answers,
-      correctAnswer: quizQuestions.questions[0].correct,
-      typeOfCorrectAnswer: quizQuestions.questions[0].type,
-    });
-  }
   componentDidMount() {
     axios
       .get('/api')
-      .then(users => console.log(users))
+      .then(questions => {
+        this.setState({
+          quizQuestions: questions,
+          content: questions.data[0].question,
+          answers: questions.data[0].answers,
+          correctAnswer: questions.data[0].correct,
+          typeOfCorrectAnswer: questions.data[0].type,
+        });
+      })
       .catch(err => {
         throw err;
       });
-    // this.setState({ users });
   }
   render() {
     if (this.state.landing === true) {
