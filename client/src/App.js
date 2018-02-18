@@ -103,7 +103,7 @@ class App extends Component {
       .get('/api')
       .then(questions => {
         this.setState({
-          quizQuestions: questions,
+          quizQuestions: questions.data,
           content: questions.data[0].question,
           answers: questions.data[0].answers,
           correctAnswer: questions.data[0].correct,
