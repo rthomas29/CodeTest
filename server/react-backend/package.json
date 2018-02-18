@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "PORT=3001 node ./bin/www"
+    "start": "PORT=3001 node ./bin/www",
+    "heroku-postbuild": "cd ../../client && npm install --only=dev && npm install && npm run build"
   },
   "dependencies": {
     "babel-preset-es2015-node6": "^0.4.0",
