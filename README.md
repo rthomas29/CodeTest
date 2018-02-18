@@ -12,4 +12,4 @@
 4. Have different quiz types that vary by difficulty.
 5. Add mLab addon to utilize MongoDB on Heroku.
 
-## Pull Requests are welcomed! :grin:
+## Pull Requests are welcome! :grin:
