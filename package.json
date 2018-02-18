@@ -1,0 +1,31 @@
+{
+  "name": "code-test",
+  "version": "1.0.0",
+  "description": "MERN stack quiz app testing HTML, CSS, JS skills",
+  "engines": {
+    "node": "8.9.x"
+  },
+  "scripts": {
+    "start": "node server/bin/www",
+    "heroku-postbuild": "cd client/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+  },
+  "cacheDirectories": [
+    "node_modules",
+    "client/node_modules"
+  ],
+  "dependencies": {
+    "express": "^4.14.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rthomas29/CodeTest.git"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "create-react-app",
+    "react"
+  ],
+  "license": "MIT",
+  "devDependencies": {}
+}
