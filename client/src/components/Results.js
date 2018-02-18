@@ -97,15 +97,15 @@ export default class Results extends Component {
               <aside>
                 <p className="text-md-left lead">
                   You answered {this.totalCorrect} out of {this.props.questionCount} questions correctly.<br />
-                  <div className="btns" className="float-left">
-                    <Button id="button" color="primary" onClick={this.handleToggle}>
-                      More Details
-                    </Button>
-                    <Button color="danger" onClick={this.props.toggleLanding}>
-                      Try Again
-                    </Button>
-                  </div>
                 </p>
+                <div className="btns" className="float-left">
+                  <Button id="button" color="primary" onClick={this.handleToggle}>
+                    More Details
+                  </Button>
+                  <Button color="danger" onClick={this.props.toggleLanding}>
+                    Try Again
+                  </Button>
+                </div>
               </aside>
             </div>
             <div className="doughnut">

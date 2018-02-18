@@ -13,7 +13,7 @@ AnswerList.PropTypes = {
 export default function AnswerList(props) {
   const answer = props.answers.map(answer => {
     return (
-      <li>
+      <li key={answer}>
         <input
           type="radio"
           value={props.type}
