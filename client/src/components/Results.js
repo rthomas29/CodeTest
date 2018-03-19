@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Doughnut, HorizontalBar } from 'react-chartjs-2';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Doughnut } from 'react-chartjs-2';
+import { Modal, ModalHeader } from 'reactstrap';
 import GraphText from './GraphText';
 import ModalComponent from './ModalComponent';
 import '../stylesheets/Results.css';
@@ -105,11 +105,6 @@ export default class Results extends Component {
               <Modal isOpen={this.state.modal} toggle={this.handleToggle} className="small">
                 <ModalHeader toggle={this.handleToggle}>Breakdown</ModalHeader>
                 <ModalComponent barData={this.barData} barOptions={this.barOptions} results={this.props.results} totalTypeCount={this.props.totalTypeCount} toggleNested={this.toggleNested} nestedModal={this.state.nestedModal} closeAll={this.state.closeAll} toggle={this.handleToggle} />
-                <ModalFooter>
-                  <Button outline color="primary" onClick={this.handleToggle}>
-                    Close
-                  </Button>
-                </ModalFooter>
               </Modal>
             </div>
           </div>
