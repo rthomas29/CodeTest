@@ -7,7 +7,7 @@ const GraphText = props => (
       <p className="text-md-left lead">
         You answered {props.totalCorrect} out of {props.questionCount} questions correctly.<br />
       </p>
-      <div className="btns" className="float-left">
+      <div className="btns float-left">
         <Button id="button" color="primary" onClick={props.handleToggle}>
           More Details
         </Button>
