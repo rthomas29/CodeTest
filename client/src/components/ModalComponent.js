@@ -1,5 +1,5 @@
 import React from 'react';
-import { Doughnut, HorizontalBar } from 'react-chartjs-2';
+import { HorizontalBar } from 'react-chartjs-2';
 import ResultDetails from './ResultDetails';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
@@ -11,11 +11,7 @@ const ModalComponent = props => (
     <Button outline color="info" onClick={props.toggleNested}>
       Click for resources
     </Button>
-    <Modal
-      isOpen={props.nestedModal}
-      toggle={props.toggleNested}
-      onClosed={props.closeAll ? props.toggle : undefined}
-    >
+    <Modal isOpen={props.nestedModal} toggle={props.toggleNested} onClosed={props.closeAll ? props.toggle : undefined}>
       <ModalHeader>Resources</ModalHeader>
       <ModalBody>
         <h3>Front End Web Development</h3>
@@ -32,7 +28,7 @@ const ModalComponent = props => (
         </ul>
       </ModalBody>
       <ModalFooter>
-        <Button outline color="danger" onClick={props.toggleNested}>
+        <Button outline color="primary" onClick={props.toggleNested}>
           Close
         </Button>
       </ModalFooter>
