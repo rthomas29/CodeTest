@@ -1,7 +1,5 @@
 ## CodeTest
 
-#### [Link to Heroku app](https://ironhack-quiz.herokuapp.com/)
-
 #### React quiz app that tests user on understanding of HTML, CSS, and JavaScript.
 
 ### To Do's
