@@ -6,7 +6,7 @@
     "node": "8.9.x"
   },
   "scripts": {
-    "start": "node server/bin/www",
+    "start": "concurrently \" cd server/react-backend && npm run start \" \" cd client && npm run start\" ",
     "heroku-postbuild": "cd client/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "cacheDirectories": [
@@ -27,5 +27,7 @@
     "react"
   ],
   "license": "MIT",
-  "devDependencies": {}
+  "devDependencies": {
+    "concurrently": "^3.6.1"
+  }
 }
