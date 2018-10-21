@@ -9,7 +9,7 @@ import './App.css';
 class App extends Component {
   constructor() {
     super();
-    this.state = {
+    this.setDefaultState = () => ({
       landing: true,
       showHome: false,
       content: '',
@@ -19,20 +19,21 @@ class App extends Component {
       answersCount: {
         HTML: 0,
         CSS: 0,
-        JavaScript: 0,
+        JavaScript: 0
       },
       totalTypeCount: {
         HTML: 0,
         CSS: 0,
-        JavaScript: 0,
+        JavaScript: 0
       },
       questionCount: 1,
       counter: 0,
       typeOfCorrectAnswer: '',
       typeOfQuestion: '',
       done: false,
-      quizQuestions: [],
-    };
+      quizQuestions: []
+    });
+    this.state = this.setDefaultState();
     this.handleQuestionChange = this.handleQuestionChange.bind(this);
     this.onAnswerSelection = this.onAnswerSelection.bind(this);
     this.checkCorrect = this.checkCorrect.bind(this);
@@ -40,11 +41,11 @@ class App extends Component {
   }
   updateUserCount(answer) {
     const updatedAnswersCount = update(this.state.answersCount, {
-      [answer]: { $apply: currentValue => currentValue + 1 },
+      [answer]: { $apply: currentValue => currentValue + 1 }
     });
     this.setState({
       answersCount: updatedAnswersCount,
-      selectedAnswer: answer,
+      selectedAnswer: answer
     });
   }
   checkCorrect(e) {
@@ -59,17 +60,17 @@ class App extends Component {
   }
   incrementTypeCount(type) {
     const updateCategoryPoint = update(this.state.totalTypeCount, {
-      [type]: { $apply: currentValue => currentValue + 1 },
+      [type]: { $apply: currentValue => currentValue + 1 }
     });
     this.setState({ totalTypeCount: updateCategoryPoint });
   }
   setUserAnswer(answer) {
     const updatedAnswersCount = update(this.state.answersCount, {
-      [answer]: { $apply: currentValue => currentValue + 1 },
+      [answer]: { $apply: currentValue => currentValue + 1 }
     });
     this.setState({
       answersCount: updatedAnswersCount,
-      selectedAnswer: answer,
+      selectedAnswer: answer
     });
   }
   handleQuestionChange() {
@@ -83,7 +84,7 @@ class App extends Component {
         answers: this.state.quizQuestions[counter].answers,
         correctAnswer: this.state.quizQuestions[counter].correct,
         typeOfCorrectAnswer: this.state.quizQuestions[counter].type,
-        selectedAnswer: '',
+        selectedAnswer: ''
       });
     } else {
       this.toggleDone();
@@ -93,12 +94,14 @@ class App extends Component {
     this.setState({ done: !this.state.done });
   }
   toggleLanding() {
-    this.setState({ landing: !this.state.landing });
+    const answersCount = { HTML: 0, CSS: 0, JavaScript: 0 };
+    this.setState(state => ({ landing: !state.landing, done: false, questionCount: 1, counter: 0, answersCount }));
   }
   calculateResults(count, total) {
-    return `${Math.round(count / total * 100)}%`;
+    return `${Math.round((count / total) * 100)}%`;
   }
   componentDidMount() {
+    this.setDefaultState();
     axios
       .get('/api')
       .then(questions => {
@@ -107,7 +110,7 @@ class App extends Component {
           content: questions.data[0].question,
           answers: questions.data[0].answers,
           correctAnswer: questions.data[0].correct,
-          typeOfCorrectAnswer: questions.data[0].type,
+          typeOfCorrectAnswer: questions.data[0].type
         });
       })
       .catch(err => {
