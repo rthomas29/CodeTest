@@ -4,14 +4,14 @@ import '../stylesheets/Question.css';
 
 Question.PropTypes = {
   questionCount: PropTypes.number.isRequired,
-  content: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired
 };
 
-export default function Question(props) {
+export default function Question({ questionCount, content }) {
   return (
     <div>
       <p className="lead">
-        {props.questionCount}. {props.content}
+        {questionCount}. {content}
       </p>
     </div>
   );

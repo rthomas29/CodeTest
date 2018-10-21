@@ -12,19 +12,29 @@ export default class Quiz extends Component {
     selectedAnswer: PropTypes.string.isRequired,
     correct: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
-    checkCorrect: PropTypes.func.isRequired,
+    checkCorrect: PropTypes.func.isRequired
   };
   render() {
+    const {
+      questionCount,
+      content,
+      answers,
+      onAnswerSelection,
+      selectedAnswer,
+      correct,
+      type,
+      checkCorrect
+    } = this.props;
     return (
-      <div id="quiz" className="container w-50" key={this.props.questionCount}>
-        <Question content={this.props.content} questionCount={this.props.questionCount} />
+      <div id="quiz" className="container w-50" key={questionCount}>
+        <Question content={content} questionCount={questionCount} />
         <AnswerList
-          answers={this.props.answers}
-          onAnswerSelection={this.props.onAnswerSelection}
-          selectedAnswer={this.props.selectedAnswer}
-          correct={this.props.correct}
-          type={this.props.type}
-          checkCorrect={this.props.checkCorrect}
+          answers={answers}
+          onAnswerSelection={onAnswerSelection}
+          selectedAnswer={selectedAnswer}
+          correct={correct}
+          type={type}
+          checkCorrect={checkCorrect}
         />
       </div>
     );

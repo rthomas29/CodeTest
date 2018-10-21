@@ -120,32 +120,43 @@ class App extends Component {
       });
   }
   render() {
-    if (this.state.landing === true) {
+    const {
+      landing,
+      done,
+      answersCount,
+      totalTypeCount,
+      questionCount,
+      content,
+      answers,
+      selectedAnswer,
+      correctAnswer,
+      typeOfCorrectAnswer
+    } = this.state;
+    if (landing) {
       return <Landing toggleLanding={this.toggleLanding} />;
     }
-    if (this.state.done === true) {
+    if (done) {
       return (
         <Results
-          results={this.state.answersCount}
+          results={answersCount}
           calculateResults={this.calculateResults}
-          totalTypeCount={this.state.totalTypeCount}
-          questionCount={this.state.questionCount}
+          totalTypeCount={totalTypeCount}
+          questionCount={questionCount}
           toggleLanding={this.toggleLanding}
         />
       );
     }
     return (
       <div className="App">
-        {this.state.users}
         <Quiz
-          content={this.state.content}
-          questionCount={this.state.questionCount}
+          content={content}
+          questionCount={questionCount}
           handleQuestionChange={this.handleQuestionChange}
-          answers={this.state.answers}
+          answers={answers}
           onAnswerSelection={this.onAnswerSelection}
-          selectedAnswer={this.state.selectedAnswer}
-          correct={this.state.correctAnswer}
-          type={this.state.typeOfCorrectAnswer}
+          selectedAnswer={selectedAnswer}
+          correct={correctAnswer}
+          type={typeOfCorrectAnswer}
           whenInputClicked={this.onInputSelect}
           checkCorrect={this.checkCorrect}
         />

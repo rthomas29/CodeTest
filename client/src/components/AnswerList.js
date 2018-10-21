@@ -7,19 +7,14 @@ AnswerList.PropTypes = {
   type: PropTypes.string.isRequired,
   selectedAnswer: PropTypes.string.isRequired,
   onAnswerSelection: PropTypes.func.isRequired,
-  checkCorrect: PropTypes.func.isRequired,
+  checkCorrect: PropTypes.func.isRequired
 };
 
-export default function AnswerList(props) {
-  const answer = props.answers.map(answer => {
+export default function AnswerList({ answers, type, selectedAnswer, onAnswerSelection, checkCorrect }) {
+  const answer = answers.map(answer => {
     return (
       <li key={answer}>
-        <input
-          type="radio"
-          value={props.type}
-          checked={props.selectedAnswer === answer}
-          onChange={props.onAnswerSelection}
-        />
+        <input type="radio" value={type} checked={selectedAnswer === answer} onChange={onAnswerSelection} />
         <span className="font-weight-light">{answer}</span>
       </li>
     );
@@ -30,7 +25,7 @@ export default function AnswerList(props) {
         <ul className="answerOption">{answer}</ul>
       </div>
       <div className="btn align-self-center">
-        <Button color="primary" onClick={props.checkCorrect} disabled={!props.selectedAnswer}>
+        <Button color="primary" onClick={checkCorrect} disabled={!selectedAnswer}>
           Submit
         </Button>
       </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import '../stylesheets/Landing.css';
 import { Button } from 'reactstrap';
 
-export default function Landing(props) {
+export default function Landing({ toggleLanding }) {
   return (
     <div className="container d-flex justify-content-center" id="landing">
       <div className="row">
@@ -10,7 +10,7 @@ export default function Landing(props) {
           <div className="brand">
             <h1 className="display-3">CodeTest</h1>
             <p className="lead">Test your knowledge of Front End Web Development.</p>
-            <Button color="success" onClick={props.toggleLanding}>
+            <Button color="success" onClick={toggleLanding}>
               Get Started
             </Button>
           </div>
