@@ -36,50 +36,56 @@ class App extends Component {
     this.state = this.setDefaultState();
   }
   updateUserCount(answer) {
-    const updatedAnswersCount = update(this.state.answersCount, {
+    const { answersCount } = this.state;
+    const updatedAnswersCount = update(answersCount, {
       [answer]: { $apply: currentValue => currentValue + 1 }
     });
-    this.setState({
+    this.setState(() => ({
       answersCount: updatedAnswersCount,
       selectedAnswer: answer
-    });
+    }));
   }
   checkCorrect = e => {
-    if (this.state.selectedAnswer === this.state.correctAnswer) {
-      this.setUserAnswer(this.state.typeOfCorrectAnswer);
+    const { selectedAnswer, correctAnswer, typeOfCorrectAnswer } = this.state;
+    if (selectedAnswer === correctAnswer) {
+      this.setUserAnswer(typeOfCorrectAnswer);
     }
     setTimeout(() => this.handleQuestionChange(), 300);
-    this.incrementTypeCount(this.state.typeOfCorrectAnswer);
+    this.incrementTypeCount(typeOfCorrectAnswer);
   };
   onAnswerSelection = e => {
-    this.setState({ selectedAnswer: e.currentTarget.nextSibling.innerHTML });
+    const selectedAnswer = e.currentTarget.nextSibling.innerHTML;
+    this.setState(() => ({ selectedAnswer }));
   };
   incrementTypeCount(type) {
-    const updateCategoryPoint = update(this.state.totalTypeCount, {
+    const { totalTypeCount } = this.state;
+    const updateCategoryPoint = update(totalTypeCount, {
       [type]: { $apply: currentValue => currentValue + 1 }
     });
-    this.setState({ totalTypeCount: updateCategoryPoint });
+    this.setState(() => ({ totalTypeCount: updateCategoryPoint }));
   }
   setUserAnswer(answer) {
-    const updatedAnswersCount = update(this.state.answersCount, {
+    const { answersCount } = this.state;
+    const updatedAnswersCount = update(answersCount, {
       [answer]: { $apply: currentValue => currentValue + 1 }
     });
-    this.setState({
+    this.setState(() => ({
       answersCount: updatedAnswersCount,
       selectedAnswer: answer
-    });
+    }));
   }
   handleQuestionChange = () => {
-    const counter = this.state.counter + 1;
-    const questionCount = this.state.questionCount + 1;
-    if (counter < this.state.quizQuestions.length) {
+    const { counter, questionCount, quizQuestions } = this.state;
+    const currCount = counter + 1;
+    const currQuestionCount = questionCount + 1;
+    if (currCount < quizQuestions.length) {
       this.setState({
-        counter: counter,
-        questionCount: questionCount,
-        content: this.state.quizQuestions[counter].question,
-        answers: this.state.quizQuestions[counter].answers,
-        correctAnswer: this.state.quizQuestions[counter].correct,
-        typeOfCorrectAnswer: this.state.quizQuestions[counter].type,
+        counter: currCount,
+        questionCount: currQuestionCount,
+        content: quizQuestions[currCount].question,
+        answers: quizQuestions[currCount].answers,
+        correctAnswer: quizQuestions[currCount].correct,
+        typeOfCorrectAnswer: quizQuestions[currCount].type,
         selectedAnswer: ''
       });
     } else {
@@ -87,7 +93,7 @@ class App extends Component {
     }
   };
   toggleDone() {
-    this.setState({ done: !this.state.done });
+    this.setState(state => ({ done: !state.done }));
   }
   toggleLanding = () => {
     const answersCount = { HTML: 0, CSS: 0, JavaScript: 0 };
@@ -101,13 +107,13 @@ class App extends Component {
     axios
       .get('/api')
       .then(questions => {
-        this.setState({
+        this.setState(() => ({
           quizQuestions: questions.data,
           content: questions.data[0].question,
           answers: questions.data[0].answers,
           correctAnswer: questions.data[0].correct,
           typeOfCorrectAnswer: questions.data[0].type
-        });
+        }));
       })
       .catch(err => {
         throw err;
