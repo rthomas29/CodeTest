@@ -102,23 +102,29 @@ class App extends Component {
   calculateResults(count, total) {
     return `${Math.round((count / total) * 100)}%`;
   }
-  componentDidMount() {
+  fetchQuestions = () => {
+    return new Promise(async (resolve, reject) => {
+      axios
+        .get('/api')
+        .then(questions => resolve(questions))
+        .catch(error => reject(error));
+    });
+  };
+  componentDidMount = async () => {
     this.setDefaultState();
-    axios
-      .get('/api')
-      .then(questions => {
-        this.setState(() => ({
-          quizQuestions: questions.data,
-          content: questions.data[0].question,
-          answers: questions.data[0].answers,
-          correctAnswer: questions.data[0].correct,
-          typeOfCorrectAnswer: questions.data[0].type
-        }));
-      })
-      .catch(err => {
-        throw err;
-      });
-  }
+    try {
+      const questions = await this.fetchQuestions();
+      this.setState(() => ({
+        quizQuestions: questions.data,
+        content: questions.data[0].question,
+        answers: questions.data[0].answers,
+        correctAnswer: questions.data[0].correct,
+        typeOfCorrectAnswer: questions.data[0].type
+      }));
+    } catch (error) {
+      console.log('Error fetching questions', error);
+    }
+  };
   render() {
     const {
       landing,
