@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Question from './Question';
-import AnswerList from './AnswerList';
-import '../stylesheets/Quiz.css';
+import Question from './components/Question';
+import AnswerList from './components/AnswerList';
+import './styles/index.css';
 export default class Quiz extends Component {
   static PropTypes = {
     questionCount: PropTypes.number.isRequired,

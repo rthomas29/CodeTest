@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../stylesheets/Question.css';
+import '../../styles/Question.css';
 
 Question.PropTypes = {
   questionCount: PropTypes.number.isRequired,

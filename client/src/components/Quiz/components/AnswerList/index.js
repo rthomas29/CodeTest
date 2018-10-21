@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
-import '../stylesheets/AnswerList.css';
+import '../../styles/AnswerList.css';
 
 AnswerList.propTypes = {
   type: PropTypes.string.isRequired,
