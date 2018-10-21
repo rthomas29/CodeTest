@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 import '../stylesheets/AnswerList.css';
 
-AnswerList.PropTypes = {
+AnswerList.propTypes = {
   type: PropTypes.string.isRequired,
   selectedAnswer: PropTypes.string.isRequired,
   onAnswerSelection: PropTypes.func.isRequired,

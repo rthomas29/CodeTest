@@ -1,4 +1,4 @@
-export const calculateTotalCorrect = (htmlTotal, cssTotal, jsTotal) => (htmlTotal + cssTotal, jsTotal);
+export const calculateTotalCorrect = (htmlTotal, cssTotal, jsTotal) => htmlTotal + cssTotal + jsTotal;
 
 export const buildDonutData = (htmlTotal, cssTotal, jsTotal) => ({
   labels: ['HTML', 'CSS', 'JavaScript'],

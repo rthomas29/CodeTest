@@ -4,6 +4,7 @@ import { Doughnut } from 'react-chartjs-2';
 import { Modal, ModalHeader } from 'reactstrap';
 import GraphText from './GraphText';
 import ModalComponent from './ModalComponent';
+import { calculateTotalCorrect, buildDonutData, donutOptions, buildBarData, barOptions } from './barUtils';
 import '../stylesheets/Results.css';
 import 'chartjs-plugin-datalabels';
 
@@ -13,78 +14,22 @@ export default class Results extends Component {
     this.state = {
       modal: false,
       nestedModal: false,
-      closeAll: false,
+      closeAll: false
     };
-    this.htmlTotal = this.props.results.HTML;
-    this.cssTotal = this.props.results.CSS;
-    this.jsTotal = this.props.results.JavaScript;
-    this.totalCorrect = this.props.results.HTML + this.props.results.CSS + this.props.results.JavaScript;
-    this.data = {
-      labels: ['HTML', 'CSS', 'JavaScript'],
-      datasets: [
-        {
-          label: '# of correct answers',
-          backgroundColor: ['rgba(50, 195, 255, 0.2)', '#FF6384', '#36A2EB'],
-          data: [this.htmlTotal, this.cssTotal, this.jsTotal],
-          hoverBackgroundColor: ['rgba(50, 195, 255, 0.2)', '#FF6384', '#36A2EB'],
-          pointHoverBorderColor: 'rgba(50, 195, 255, 0.2)',
-          pointBackgroundColor: 'rgba(23, 27, 236, 0.2)',
-        },
-      ],
-    };
-    this.options = {
-      maintainAspectRatio: false,
-      responsive: true,
-      legend: {
-        display: true,
-        position: 'bottom',
-      },
-      plugins: {
-        datalabels: {
-          textAlign: 'center',
-          color: '#fff',
-        },
-      },
-    };
-    this.barData = {
-      labels: ['HTML', 'CSS', 'JavaScript'],
-      datasets: [
-        {
-          data: [this.htmlTotal, this.cssTotal, this.jsTotal],
-          borderWidth: 1,
-          backgroundColor: ['rgba(63,195,128, 0.2)', 'rgba(239,72,54,0.2)', 'rgba(65,131,215,0.2)'],
-        },
-      ],
-    };
-    this.barOptions = {
-      legend: {
-        display: false,
-      },
-      maintainAspectRatio: false,
-      scales: {
-        xAxes: [
-          {
-            ticks: {
-              beginAtZero: true,
-            },
-          },
-        ],
-      },
-    };
-    this.handleToggle = this.handleToggle.bind(this);
-    this.toggleNested = this.toggleNested.bind(this);
+    this.totalCorrect = calculateTotalCorrect(this.props.htmlTotal, this.props.cssTotal, this.props.jsTotal);
+    this.donutData = buildDonutData(this.props.htmlTotal, this.props.cssTotal, this.props.jsTotal);
+    this.barData = buildBarData(this.props.htmlTotal, this.props.cssTotal, this.props.jsTotal);
   }
-  handleToggle() {
-    this.setState({ modal: !this.state.modal });
-  }
-  toggleNested() {
-    this.setState({ nestedModal: !this.state.nestedModal, closeAll: false });
-  }
-  static PropTypes = {
-    questionCount: PropTypes.number.isRequired,
-    toggleLanding: PropTypes.func.isRequired,
+
+  handleToggle = () => {
+    this.setState(state => ({ modal: !state.modal }));
+  };
+  toggleNested = () => {
+    this.setState(state => ({ nestedModal: !state.nestedModal, closeAll: false }));
   };
   render() {
+    const { questionCount, toggleLanding, totalTypeCount, results } = this.props;
+    const { modal, nestedModal, closeAll } = this.state;
     return (
       <div id="results-div" className="container w-75 d-flex justify-content-center">
         <div>
@@ -96,15 +41,24 @@ export default class Results extends Component {
           <div className="main-results d-flex flex-row">
             <GraphText
               totalCorrect={this.totalCorrect}
-              questionCount={this.props.questionCount}
+              questionCount={questionCount}
               handleToggle={this.handleToggle}
-              toggleLanding={this.props.toggleLanding}
+              toggleLanding={toggleLanding}
             />
             <div className="doughnut">
-              <Doughnut data={this.data} options={this.options} />
-              <Modal isOpen={this.state.modal} toggle={this.handleToggle} className="small">
+              <Doughnut data={this.donutData} options={donutOptions} />
+              <Modal isOpen={modal} toggle={this.handleToggle} className="small">
                 <ModalHeader toggle={this.handleToggle}>Breakdown</ModalHeader>
-                <ModalComponent barData={this.barData} barOptions={this.barOptions} results={this.props.results} totalTypeCount={this.props.totalTypeCount} toggleNested={this.toggleNested} nestedModal={this.state.nestedModal} closeAll={this.state.closeAll} toggle={this.handleToggle} />
+                <ModalComponent
+                  barData={this.barData}
+                  barOptions={barOptions}
+                  results={results}
+                  totalTypeCount={totalTypeCount}
+                  toggleNested={this.toggleNested}
+                  nestedModal={nestedModal}
+                  closeAll={closeAll}
+                  toggle={this.handleToggle}
+                />
               </Modal>
             </div>
           </div>
@@ -112,4 +66,8 @@ export default class Results extends Component {
       </div>
     );
   }
+  static PropTypes = {
+    questionCount: PropTypes.number.isRequired,
+    toggleLanding: PropTypes.func.isRequired
+  };
 }

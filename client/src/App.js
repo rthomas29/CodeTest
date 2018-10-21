@@ -139,6 +139,9 @@ class App extends Component {
       return (
         <Results
           results={answersCount}
+          htmlTotal={answersCount.HTML}
+          cssTotal={answersCount.CSS}
+          jsTotal={answersCount.JavaScript}
           calculateResults={this.calculateResults}
           totalTypeCount={totalTypeCount}
           questionCount={questionCount}
