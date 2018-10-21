@@ -5,12 +5,10 @@ const router = express.Router();
 
 mongoose.connect('mongodb://localhost/codeTest');
 
-router.get('/', (req, res) => res.redirect('/api'));
-
-router.get('/api', function(req, res, next) {
+router.get('/api', (req, res, next) => {
   // make call to db here, then expose array of questions in res.send
   Question.find({}, (err, questions) => {
-    if (err) throw err;
+    if (err) next(err);
     res.send(questions);
   });
 });
