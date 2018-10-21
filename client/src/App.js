@@ -34,10 +34,6 @@ class App extends Component {
       quizQuestions: []
     });
     this.state = this.setDefaultState();
-    this.handleQuestionChange = this.handleQuestionChange.bind(this);
-    this.onAnswerSelection = this.onAnswerSelection.bind(this);
-    this.checkCorrect = this.checkCorrect.bind(this);
-    this.toggleLanding = this.toggleLanding.bind(this);
   }
   updateUserCount(answer) {
     const updatedAnswersCount = update(this.state.answersCount, {
@@ -48,16 +44,16 @@ class App extends Component {
       selectedAnswer: answer
     });
   }
-  checkCorrect(e) {
+  checkCorrect = e => {
     if (this.state.selectedAnswer === this.state.correctAnswer) {
       this.setUserAnswer(this.state.typeOfCorrectAnswer);
     }
     setTimeout(() => this.handleQuestionChange(), 300);
     this.incrementTypeCount(this.state.typeOfCorrectAnswer);
-  }
-  onAnswerSelection(e) {
+  };
+  onAnswerSelection = e => {
     this.setState({ selectedAnswer: e.currentTarget.nextSibling.innerHTML });
-  }
+  };
   incrementTypeCount(type) {
     const updateCategoryPoint = update(this.state.totalTypeCount, {
       [type]: { $apply: currentValue => currentValue + 1 }
@@ -73,7 +69,7 @@ class App extends Component {
       selectedAnswer: answer
     });
   }
-  handleQuestionChange() {
+  handleQuestionChange = () => {
     const counter = this.state.counter + 1;
     const questionCount = this.state.questionCount + 1;
     if (counter < this.state.quizQuestions.length) {
@@ -89,14 +85,14 @@ class App extends Component {
     } else {
       this.toggleDone();
     }
-  }
+  };
   toggleDone() {
     this.setState({ done: !this.state.done });
   }
-  toggleLanding() {
+  toggleLanding = () => {
     const answersCount = { HTML: 0, CSS: 0, JavaScript: 0 };
     this.setState(state => ({ landing: !state.landing, done: false, questionCount: 1, counter: 0, answersCount }));
-  }
+  };
   calculateResults(count, total) {
     return `${Math.round((count / total) * 100)}%`;
   }
